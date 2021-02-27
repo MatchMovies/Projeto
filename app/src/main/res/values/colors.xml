@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="CorFundo">#88006A</color>
-    <color name="CorTexto">#FF5722</color>
+    <color name="CorTexto">#FFFFFF</color>
     <color name="CorTitulo">@color/black</color><!-- Cor que digita dentro da caixa de entrar. -->
 </resources>

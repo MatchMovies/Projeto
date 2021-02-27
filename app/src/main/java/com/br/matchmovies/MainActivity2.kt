@@ -3,31 +3,22 @@ package com.br.matchmovies
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import android.widget.ImageView
-import kotlin.math.ln
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_home)
+        setContentView(R.layout.activity_main2)
 
         initViews()
     }
 
     private fun initViews() {
+        val filmes = findViewById<ImageView>(R.id.matchfilmes)
 
-        val botao = findViewById<Button>(R.id.botaoEntrar)
-
-        botao.setOnClickListener {
-            val intent = Intent(this,MainActivity2::class.java)
+        filmes.setOnClickListener {
+            val intent = Intent(this, MainActivity3::class.java)
             startActivity(intent)
         }
-
-
     }
-
-
 }
