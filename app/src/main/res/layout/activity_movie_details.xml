@@ -17,73 +17,52 @@
         android:layout_height="wrap_content"
         android:background="@color/purple_700"
         android:foreground="@drawable/ic_logo_horizontal"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
         android:foregroundGravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
-            android:id="@+id/btn_back"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="60dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="8dp"
-            android:drawableTop="@drawable/ic_baseline_arrow_back_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
         <ImageView
             android:id="@+id/img_movie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:contentDescription="TODO"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_back"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_margin="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_movie"
-        tools:text="Title example" />
-
-        <TextView
-            android:id="@+id/tv_rating"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="132dp"
-            android:layout_marginLeft="132dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/rating"
-            android:textSize="14sp"
+            android:layout_margin="18dp"
+            android:layout_marginTop="8dp"
+            android:textSize="24sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@+id/img_movie"
+            tools:text="Title example" />
 
         <RatingBar
             android:id="@+id/rating"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="82dp"
             android:layout_height="18dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:clickable="false"
             android:isIndicator="true"
             android:numStars="5"
             android:progressTint="#ff9901"
             app:layout_constraintBottom_toTopOf="@+id/btn_match"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.053"
-            app:layout_constraintStart_toEndOf="@+id/tv_rating"
+            app:layout_constraintHorizontal_bias="0.404"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
             app:layout_constraintVertical_bias="0.166" />
 
@@ -92,15 +71,16 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:drawableTop="@drawable/ic_baseline_local_movies_24"
             android:text="@string/trailer"
+            android:textAllCaps="false"
             android:textColor="#fff"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_rating" />
+            app:layout_constraintTop_toBottomOf="@+id/rating" />
 
         <Button
             android:id="@+id/btn_match"
@@ -112,23 +92,141 @@
             android:layout_marginTop="4dp"
             android:drawableTop="@drawable/ic_baseline_favorite_24"
             android:text="@string/match"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_trailer"
+            app:layout_constraintTop_toBottomOf="@+id/rating" />
+
+        <Button
+            android:id="@+id/btn_evaluate"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:drawableTop="@drawable/ic_baseline_star_half_24"
+            android:text="Avaliar"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/btn_match"
+            app:layout_constraintTop_toBottomOf="@+id/rating" />
+
+        <Button
+            android:id="@+id/btn_share"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:drawableTop="@drawable/ic_baseline_share_24"
+            android:text="Compartilhar"
+            android:textAllCaps="false"
             android:textColor="#fff"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/btn_trailer"
-            app:layout_constraintTop_toBottomOf="@+id/tv_rating" />
+            app:layout_constraintStart_toEndOf="@+id/btn_evaluate"
+            app:layout_constraintTop_toBottomOf="@+id/rating" />
 
         <TextView
             android:id="@+id/tv_overview"
-            android:layout_width="367dp"
-            android:layout_height="88dp"
+            android:layout_width="380dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.636"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_trailer"
             tools:text="Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo." />
+
+        <TextView
+            android:id="@+id/tv_genres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.039"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_overview"
+            tools:text="Gêneros: Terror" />
+
+        <TextView
+            android:id="@+id/tv_director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.039"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_genres"
+            tools:text="Direção: Fulano XXX" />
+
+        <TextView
+            android:id="@+id/tv_cast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.053"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_director"
+            tools:text="Elenco: Fulano XXX, YYYY, WWWW" />
+
+        <TextView
+            android:id="@+id/tv_provider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Disponível em:"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.036"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_cast" />
+
+        <ImageView
+            android:id="@+id/img_prime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_icons8_amazon_prime_video"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.032"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_provider" />
+
+        <ImageView
+            android:id="@+id/img_netflix"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_icons8_netflix"
+            app:layout_constraintStart_toEndOf="@+id/img_prime"
+            app:layout_constraintTop_toBottomOf="@+id/tv_provider" />
+
+        <ImageView
+            android:id="@+id/img_disney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_icons8_disney_plus"
+            app:layout_constraintStart_toEndOf="@+id/img_netflix"
+            app:layout_constraintTop_toBottomOf="@+id/tv_provider" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
