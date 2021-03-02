@@ -5,7 +5,5 @@
     <string name="esqueceu_senha"> Não possui conta? Criar uma conta Agora</string>
     <string name="rating">Avaliação:</string>
     <string name="trailer">Trailer</string>
-    <string name="match">UnMatch</string>
-
-
+    <string name="match">Match</string>
 </resources>

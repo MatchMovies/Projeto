@@ -1,5 +1,6 @@
 package com.br.matchmovies.view
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -21,6 +22,8 @@ class MovieDetailsActivity : AppCompatActivity() {
     private val genre by lazy { findViewById<TextView>(R.id.tv_genres) }
     private val director by lazy { findViewById<TextView>(R.id.tv_director) }
     private val cast by lazy { findViewById<TextView>(R.id.tv_cast) }
+    private val time by lazy { findViewById<TextView>(R.id.tv_time) }
+    private val year by lazy { findViewById<TextView>(R.id.tv_year) }
     private val textOverview by lazy { findViewById<TextView>(R.id.tv_overview) }
 
 
@@ -31,18 +34,21 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     }
 
+
     private fun initViews() {
 
-        val movie = Movie("Annabelle (2014)", "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
-                3.0F, "Gênero: Terror", "Elenco:  Ward Horton, Annabelle Wallis, Alfre Woodard","Direção: John R. Leonetti", R.drawable.anabele)
+        val movie = Movie("Annabelle", "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
+                3.0F, "Terror", "Ward Horton, Annabelle Wallis, Alfre Woodard","John R. Leonetti", 135, 2014, R.drawable.anabele)
 
         imageMovie.setImageResource(movie.imageMovie)
         title.text = movie.title
         ratingBar.rating = movie.rating
         textOverview.text = movie.overview
-        genre.text = movie.genres
-        director.text = movie.director
-        cast.text = movie.cast
+        genre.text = "Gênero: ${movie.genres}"
+        director.text = "Direção: ${movie.director}"
+        cast.text = "Elenco:  ${movie.cast}"
+        time.text = "Duração: ${movie.time} minutos"
+        year.text = "Ano de lançamento: ${movie.year}"
 
 
     }
