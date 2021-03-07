@@ -5,6 +5,9 @@
     <string name="esqueceu_senha"> Não possui conta? Criar uma conta Agora</string>
     <string name="forgot_password">Digite seu email cadastrado para recuperar a sua senha</string>
     <string name="email">Email</string>
+    <string name="message_home">Qual vai ser o match de hoje ?</string>
+    <string name="message_home_movie">Filmes</string>
+    <string name="message_home_season">Series</string>
 
 
 </resources>
