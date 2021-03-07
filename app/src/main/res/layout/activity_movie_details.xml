@@ -93,6 +93,7 @@
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:drawableTop="@drawable/ic_baseline_local_movies_24"
             android:text="@string/trailer"

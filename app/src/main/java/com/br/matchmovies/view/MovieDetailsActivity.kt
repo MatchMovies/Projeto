@@ -34,18 +34,19 @@ class MovieDetailsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = null
 
-        initViews()
+        val movie = getMovie()
+
+        initViews(movie)
 
         btnTrailer.setOnClickListener {
             val intent = Intent(this, TrailerActivity::class.java)
+            intent.putExtra("videoId", movie.trailer)
             startActivity(intent)
         }
 
     }
 
-    private fun initViews() {
-
-        val movie = getMovie()
+    private fun initViews(movie: Movie) {
 
         imageMovie.setImageResource(movie.imageMovie)
         title.text = movie.title
@@ -68,7 +69,8 @@ class MovieDetailsActivity : AppCompatActivity() {
             listOf("John R. Leonetti"),
             " 135 min",
             " 2014",
-            R.drawable.anabele
+            R.drawable.anabele,
+            "kHl6aU30pIo"
         )
     }
 

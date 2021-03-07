@@ -1,10 +1,10 @@
 package com.br.matchmovies.view
 
 import android.os.Bundle
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.br.matchmovies.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 
@@ -16,6 +16,15 @@ class TrailerActivity : AppCompatActivity() {
 
       val youTubePlayerView = findViewById<YouTubePlayerView>(R.id.youtube_player_view)
        lifecycle.addObserver(youTubePlayerView)
+
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = intent.extras?.getString("videoId")
+                if (videoId != null) {
+                    youTubePlayer.loadVideo(videoId, 0f)
+                }
+            }
+        })
     }
 
 
