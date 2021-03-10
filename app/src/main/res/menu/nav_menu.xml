@@ -12,8 +12,8 @@
         android:title="Filme"/>
 
     <item
-        android:id="@+id/ic_heart_nav_barr"
-        android:icon="@drawable/ic_heart_nav_bar"
+        android:id="@+id/ic_match_nav_bar"
+        android:icon="@drawable/ic_match_nav_bar"
         android:title="Match"/>
 
     <item
