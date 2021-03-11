@@ -34,7 +34,9 @@ class MovieDetailsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.title = null
 
-        val movie = getMovie()
+        val info = intent.extras
+
+        val movie = info?.getSerializable("movie") as Movie
 
         initViews(movie)
 
@@ -61,6 +63,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun getMovie(): Movie {
         return Movie(
+            1,
             "Annabelle",
             "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
             3.0F,
