@@ -24,5 +24,11 @@
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:alertDialogTheme">@style/DialogTheme</item>
     </style>
+
+    <style name="DialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
+        <item name="android:textColor">@color/purple_700</item>
+    </style>
+
 </resources>

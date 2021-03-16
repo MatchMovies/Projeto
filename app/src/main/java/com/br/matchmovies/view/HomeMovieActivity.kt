@@ -6,15 +6,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
-import com.br.matchmovies.adapter.ListMovieAdapter
-import com.br.matchmovies.adapter.MovieAdapter
-import com.br.matchmovies.model.Match
+import com.br.matchmovies.adapter.HomeMovieAdapter
+import com.br.matchmovies.model.ListMovies
 import com.br.matchmovies.model.Movie
 
 class HomeMovieActivity : AppCompatActivity() {
 
     private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
-    val recycler by lazy { findViewById<RecyclerView>(R.id.recycler_view) }
+    val recycler by lazy { findViewById<RecyclerView>(R.id.rv_list_of_movie_list) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,29 +21,30 @@ class HomeMovieActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbar)
         supportActionBar?.title = null
+        toolbar.setNavigationOnClickListener { onBackPressed() }
 
         initRecycler()
     }
 
     private fun initRecycler() {
 
-        val listMatch = getMatch()
+        val movieList = getMovieList()
 
         recycler.layoutManager = LinearLayoutManager(this)
 
-        val adapter = ListMovieAdapter(listMatch)
+        val adapter = HomeMovieAdapter(movieList)
         recycler.adapter = adapter
 
     }
 
-    private fun getMatch(): MutableList<Match> {
-        val listMatch = mutableListOf<Match>()
-        listMatch.add(Match("Terror", getMovie()))
-        listMatch.add(Match("Suspense", getMovie()))
-        listMatch.add(Match("Mistério", getMovie()))
-        listMatch.add(Match("Thriller", getMovie()))
+    private fun getMovieList(): MutableList<ListMovies> {
+        val listMovieList = mutableListOf<ListMovies>()
+        listMovieList.add(ListMovies("Terror", getMovie()))
+        listMovieList.add(ListMovies("Suspense", getMovie()))
+        listMovieList.add(ListMovies("Mistério", getMovie()))
+        listMovieList.add(ListMovies("Thriller", getMovie()))
 
-        return listMatch
+        return listMovieList
     }
 
 

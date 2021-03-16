@@ -36,7 +36,7 @@ class MovieAdapter(private val movieList: MutableList<Movie>) :
 
     inner class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val imageview: ImageView by lazy { view.findViewById<ImageView>(R.id.imageView) }
+        val imageview: ImageView by lazy { view.findViewById<ImageView>(R.id.iv_movie_poster) }
     }
 
 }

@@ -7,25 +7,24 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
-import com.br.matchmovies.model.Match
+import com.br.matchmovies.model.ListMovies
 
-class ListMovieAdapter(private val matchList : MutableList<Match>) : RecyclerView.Adapter<ListMovieAdapter.MatchViewHolder>(){
+class HomeMovieAdapter(private val listMoviesList : MutableList<ListMovies>) : RecyclerView.Adapter<HomeMovieAdapter.MatchViewHolder>(){
 
- //   private val viewPool = RecyclerView.RecycledViewPool()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListMovieAdapter.MatchViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMovieAdapter.MatchViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_movie_item, parent, false)
         return MatchViewHolder(view)
     }
 
-    override fun getItemCount() = matchList.size
+    override fun getItemCount() = listMoviesList.size
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
 
         val title = holder.textView
-        title.text = matchList[position].title
+        title.text = listMoviesList[position].title
 
-        val movies = matchList[position].movies
+        val movies = listMoviesList[position].movies
 
         holder.recyclerView.apply {
             layoutManager = LinearLayoutManager(holder.recyclerView.context, LinearLayoutManager.HORIZONTAL, false)
@@ -36,7 +35,7 @@ class ListMovieAdapter(private val matchList : MutableList<Match>) : RecyclerVie
 
 
     inner class MatchViewHolder(view : View) : RecyclerView.ViewHolder(view){
-        val textView  by lazy { view.findViewById<TextView>(R.id.textView) }
-        val recyclerView  by lazy { view.findViewById<RecyclerView>(R.id.rv_child) }
+        val textView  by lazy { view.findViewById<TextView>(R.id.tv_title_movie_list) }
+        val recyclerView  by lazy { view.findViewById<RecyclerView>(R.id.rv_movie_list) }
     }
 }

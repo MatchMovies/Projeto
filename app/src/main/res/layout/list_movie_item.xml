@@ -7,23 +7,24 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_title_movie_list"
         style="@style/Base.TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/rv_child"
-        android:padding="20dp"
-        android:text="Hello World"
+        android:layout_alignStart="@+id/rv_movie_list"
+        android:padding="10dp"
         android:textColor="@color/white"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hello"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_child"
+        android:id="@+id/rv_movie_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -34,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_movie_list"
         app:layout_constraintTop_toTopOf="parent" />
 
 
