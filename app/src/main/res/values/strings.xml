@@ -4,11 +4,16 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_match_fragment">Hello match fragment</string>
     <string name="esqueceu_senha"> Não possui conta? Criar uma conta Agora</string>
+    <string name="rating">Avaliação:</string>
+    <string name="trailer">Trailer</string>
+    <string name="match">UnMatch</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="compartilhar">Compartilhar</string>
+    <string name="disponivel">Disponível em:</string>
     <string name="forgot_password">Digite seu email cadastrado para recuperar a sua senha</string>
     <string name="email">Email</string>
     <string name="message_home">Qual vai ser o match de hoje ?</string>
     <string name="message_home_movie">Filmes</string>
     <string name="message_home_season">Series</string>
-
 
 </resources>
