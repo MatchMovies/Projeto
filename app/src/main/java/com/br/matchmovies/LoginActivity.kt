@@ -3,24 +3,29 @@ package com.br.matchmovies
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
+import android.widget.Button
 
-class MainActivity3 : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_home)
+        setContentView(R.layout.activity_main_login)
 
         initViews()
     }
 
     private fun initViews() {
 
-        val mexcluir = findViewById<ImageView>(R.id.mexcluir)
+        val botao = findViewById<Button>(R.id.btentrar)
 
-        mexcluir.setOnClickListener {
-            val intent = Intent( this, MainActivity4::class.java)
+        botao.setOnClickListener {
+
+          val intent = Intent(this, CadastroActivity::class.java)
             startActivity(intent)
         }
 
+
     }
+
+
 }

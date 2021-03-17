@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.br.matchmovies">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,12 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchMovies">
-        <activity android:name=".MainActivity5"></activity>
+
+        <activity
+            android:name=".view.TrailerActivity"
+            android:hardwareAccelerated="true"
+            android:theme="@style/Theme.AppCompat.Translucent" /> <!-- <activity android:name=".view.MovieDetailsActivity"></activity> -->
+        <activity android:name=".view.MovieDetailsActivity"/>
+        <activity android:name=".view.HomeMovieActivity"/>
+        <activity android:name=".MatchActivity"/>
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".ActivityContract" />
-        <activity android:name=".MainActivity4" />
-        <activity android:name=".MainActivity3" />
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".HomeActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
