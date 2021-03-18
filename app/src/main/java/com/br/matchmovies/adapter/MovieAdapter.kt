@@ -11,7 +11,7 @@ import com.br.matchmovies.model.Movie
 import com.br.matchmovies.view.MovieDetailsActivity
 import java.io.Serializable
 
-class MovieAdapter(private val movieList: MutableList<Movie>) :
+class MovieAdapter(private val movieList: MutableList<Movie>, val callback: (Movie) -> Unit) :
         RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapter.MovieViewHolder {
@@ -28,9 +28,11 @@ class MovieAdapter(private val movieList: MutableList<Movie>) :
 
 
         holder.itemView.setOnClickListener {
-           val intent = Intent(it.context, MovieDetailsActivity::class.java)
-            intent.putExtra("movie", movieList[position] as Serializable)
-             it.context.startActivity(intent)
+
+        callback(movieList[position])
+//           val intent = Intent(it.context, MovieDetailsActivity::class.java)
+//            intent.putExtra("movie", movieList[position] as Serializable)
+//             it.context.startActivity(intent)
         }
     }
 
