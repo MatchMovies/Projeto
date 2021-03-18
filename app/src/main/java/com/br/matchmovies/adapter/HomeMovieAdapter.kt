@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
 import com.br.matchmovies.model.ListMovies
+import com.br.matchmovies.model.Movie
 
-class HomeMovieAdapter(private val listMoviesList : MutableList<ListMovies>) : RecyclerView.Adapter<HomeMovieAdapter.MatchViewHolder>(){
+class HomeMovieAdapter(private val listMoviesList: MutableList<ListMovies>, val callback: (Movie) -> Unit) :
+        RecyclerView.Adapter<HomeMovieAdapter.MatchViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMovieAdapter.MatchViewHolder {
@@ -28,7 +30,9 @@ class HomeMovieAdapter(private val listMoviesList : MutableList<ListMovies>) : R
 
         holder.recyclerView.apply {
             layoutManager = LinearLayoutManager(holder.recyclerView.context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = MovieAdapter(movies)
+            adapter = MovieAdapter(movies){movie->
+                callback(movie)
+            }
             setRecycledViewPool(RecyclerView.RecycledViewPool())
         }
     }
