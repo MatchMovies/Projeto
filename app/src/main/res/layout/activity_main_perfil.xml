@@ -30,75 +30,145 @@
                 android:layout_width="341dp"
                 android:layout_height="29dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="56dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:text="Meus Match's"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/gift_card"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dados_pessoais" />
 
             <TextView
                 android:id="@+id/dados_pessoais"
                 android:layout_width="341dp"
                 android:layout_height="29dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="45dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
                 android:text="Dados Pessoais"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/meus_matchs"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/meus_matchs"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/sair"
+                android:layout_width="331dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                android:text="Sair"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Contato"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/Contato"
                 android:layout_width="341dp"
                 android:layout_height="29dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="84dp"
+                android:layout_marginBottom="8dp"
                 android:text="Contato"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/sair"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gift_card" />
 
             <TextView
                 android:id="@+id/gift_card"
                 android:layout_width="341dp"
                 android:layout_height="29dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="56dp"
+                android:layout_marginBottom="8dp"
                 android:text="Gift Card"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/Contato"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meus_matchs" />
 
             <ImageButton
-                android:id="@+id/btn_dadosPessoais"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:id="@+id/btn_dados_pessoais"
+                android:layout_width="34dp"
+                android:layout_height="29dp"
+                android:layout_marginEnd="24dp"
+                android:background="#00FFFFFF"
+                android:onClick="btn_cadastro"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@android:drawable/arrow_down_float"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="72dp" />
+                app:srcCompat="@drawable/ic_launcher_seta_foreground"
+                tools:ignore="MissingConstraints,VectorDrawableCompat"
+                tools:layout_editor_absoluteY="54dp" />
+
+            <ImageButton
+                android:id="@+id/btn_gift_card"
+                android:layout_width="34dp"
+                android:layout_height="29dp"
+                android:layout_marginEnd="24dp"
+                android:background="#00FFFFFF"
+                android:onClick="btn_cadastro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_launcher_seta_foreground"
+                tools:ignore="MissingConstraints,VectorDrawableCompat"
+                tools:layout_editor_absoluteY="205dp" />
+
+            <ImageButton
+                android:id="@+id/btn_contato"
+                android:layout_width="34dp"
+                android:layout_height="29dp"
+                android:layout_marginEnd="24dp"
+                android:background="#00FFFFFF"
+                android:onClick="btn_cadastro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_launcher_seta_foreground"
+                tools:ignore="MissingConstraints,VectorDrawableCompat"
+                tools:layout_editor_absoluteY="280dp" />
+
+            <ImageButton
+                android:id="@+id/btn_meus_matches"
+                android:layout_width="34dp"
+                android:layout_height="29dp"
+                android:layout_marginEnd="24dp"
+                android:background="#00FFFFFF"
+                android:onClick="btn_cadastro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_launcher_seta_foreground"
+                tools:ignore="MissingConstraints,VectorDrawableCompat"
+                tools:layout_editor_absoluteY="130dp" />
+
+            <ImageButton
+                android:id="@+id/btn_sair"
+                android:layout_width="72dp"
+                android:layout_height="66dp"
+                android:layout_marginEnd="4dp"
+                android:background="#00FFFFFF"
+                android:scaleType="centerInside"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_launcher_sair_foreground"
+                tools:layout_editor_absoluteY="342dp"
+                tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -121,35 +191,20 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/text_view_email"
-                android:layout_width="169dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="24dp"
-                android:textStyle="bold"
-                android:text="daiana.souza@gmail.com"
-                android:textColor="#73000000"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.138"
-                app:layout_constraintStart_toEndOf="@+id/imageView_profile" />
-
-            <TextView
                 android:id="@+id/text_view_name"
-                android:layout_width="115dp"
-                android:layout_height="27dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"
-                android:layout_marginTop="16dp"
-                android:text="Daiana souza"
+                android:text="Daiana Souza"
                 android:textAlignment="center"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toTopOf="@+id/text_view_email"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.121"
                 app:layout_constraintStart_toEndOf="@+id/imageView_profile"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 tools:ignore="MissingConstraints" />
 
             <de.hdodenhof.circleimageview.CircleImageView
