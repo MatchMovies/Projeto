@@ -177,7 +177,17 @@
                 android:layout_height="452dp"
                 app:layout_constraintStart_toEndOf="@+id/btn_dados_pessoais"
                 tools:layout_editor_absoluteY="-1dp"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints" >
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fragment_meus_matchs"
+                android:layout_width="268dp"
+                android:layout_height="452dp"
+                app:layout_constraintStart_toEndOf="@+id/btn_meus_matches"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="38dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

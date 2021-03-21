@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.br.matchmovies.R
 import com.br.matchmovies.fragments.DadosPessoaisFragment
+import com.br.matchmovies.fragments.MeusMatchsFragment
 import kotlin.system.exitProcess
 
 class PerfilActivity : AppCompatActivity() {
@@ -24,6 +25,7 @@ class PerfilActivity : AppCompatActivity() {
         bitmapRound.cornerRadius = 1000f
 
         val dp_Fragment = DadosPessoaisFragment()
+        val mm_Fragment = MeusMatchsFragment()
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_dados_pessoais, dp_Fragment)
@@ -37,11 +39,22 @@ class PerfilActivity : AppCompatActivity() {
                 commit()
             }
 
-         btn_sair.setOnClickListener { finish()
-         System.out}
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment_meus_matchs, mm_Fragment)
+                commit()
+            }
+            btn_dados_pessoais.setOnClickListener {
+                supportFragmentManager.beginTransaction().apply {
+                    replace(R.id.fragment_meus_matchs, mm_Fragment)
+                    addToBackStack(null)
+                    commit()
+                }
+
+                btn_sair.setOnClickListener {
+                    finish()
+                    System.out
+                }
+            }
         }
-
-
-
     }
 }
