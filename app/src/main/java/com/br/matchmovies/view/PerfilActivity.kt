@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.br.matchmovies.R
+import com.br.matchmovies.fragments.DadosPessoaisFragment
 import kotlin.system.exitProcess
 
 class PerfilActivity : AppCompatActivity() {
@@ -22,13 +23,25 @@ class PerfilActivity : AppCompatActivity() {
         val bitmapRound = RoundedBitmapDrawableFactory.create(resources, bitmap)
         bitmapRound.cornerRadius = 1000f
 
+        val dp_Fragment = DadosPessoaisFragment()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragment_dados_pessoais, dp_Fragment)
+            commit()
+        }
 
         btn_dados_pessoais.setOnClickListener {
-            val intent = Intent(this, CadastroActivity::class.java)
-            startActivity(intent)
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.fragment_dados_pessoais, dp_Fragment)
+                addToBackStack(null)
+                commit()
+            }
 
          btn_sair.setOnClickListener { finish()
          System.out}
         }
+
+
+
     }
 }

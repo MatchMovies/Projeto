@@ -90,6 +90,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/sair"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/gift_card" />
 
@@ -170,6 +171,14 @@
                 tools:layout_editor_absoluteY="342dp"
                 tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
+            <FrameLayout
+                android:id="@+id/fragment_dados_pessoais"
+                android:layout_width="268dp"
+                android:layout_height="452dp"
+                app:layout_constraintStart_toEndOf="@+id/btn_dados_pessoais"
+                tools:layout_editor_absoluteY="-1dp"
+                tools:ignore="MissingConstraints" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
@@ -224,7 +233,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_voltar"
         android:layout_width="38dp"
         android:layout_height="41dp"
         android:background="@drawable/ic_baseline_arrow_back_24"
