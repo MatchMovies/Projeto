@@ -15,12 +15,12 @@
         <activity
             android:name=".view.TrailerActivity"
             android:hardwareAccelerated="true"
-            android:theme="@style/Theme.AppCompat.Translucent" /> <!-- <activity android:name=".view.MovieDetailsActivity"></activity> -->
+            android:theme="@style/Theme.AppCompat.Translucent" />
         <activity android:name=".view.MovieDetailsActivity"/>
         <activity android:name=".view.HomeMovieActivity"/>
-        <activity android:name=".MatchActivity"/>
+<!--        <activity android:name=".MatchActivity"/>-->
         <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".ActivityContract" />
+<!--        <activity android:name=".ActivityContract" />-->
         <activity android:name=".LoginActivity"/>
         <activity android:name=".HomeActivity">
 

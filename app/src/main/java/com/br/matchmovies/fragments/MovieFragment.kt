@@ -1,60 +1,134 @@
 package com.br.matchmovies.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
+import com.br.matchmovies.adapter.HomeMovieAdapter
+import com.br.matchmovies.model.ListMovies
+import com.br.matchmovies.model.Movie
+import com.br.matchmovies.view.MovieDetailsActivity
+import java.io.Serializable
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MovieFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MovieFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private val toolbar by lazy { view?.findViewById<Toolbar>(R.id.toolbar) }
+    private val recycler by lazy { view?.findViewById<RecyclerView>(R.id.rv_list_of_movie_list) }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+//        setSupportActionBar(toolbar)
+//        supportActionBar.title = null
+//        toolbar?.setNavigationOnClickListener { onBackPressed() }
+
+        initRecycler()
+
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    private fun initRecycler() {
+
+        val movieList = getMovieList()
+
+        recycler?.layoutManager = LinearLayoutManager(requireContext())
+
+        val adapter = HomeMovieAdapter(movieList){movie->
+            navigateToMovieDetails(movie)
         }
+        recycler?.adapter = adapter
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie, container, false)
+    private fun navigateToMovieDetails(movie: Movie) {
+        val intent = Intent(requireContext(), MovieDetailsActivity::class.java)
+        intent.putExtra("movie", movie as Serializable)
+        startActivity(intent)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MovieFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MovieFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    private fun getMovieList(): MutableList<ListMovies> {
+        val listMovieList = mutableListOf<ListMovies>()
+        listMovieList.add(ListMovies("Terror", getMovie()))
+        listMovieList.add(ListMovies("Suspense", getMovie()))
+        listMovieList.add(ListMovies("Mistério", getMovie()))
+        listMovieList.add(ListMovies("Thriller", getMovie()))
+
+        return listMovieList
+    }
+
+
+    private fun getMovie(): MutableList<Movie> {
+        val movieList = mutableListOf<Movie>()
+        movieList.add(Movie(
+                1,
+                "Annabelle",
+                "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
+                3.0F,
+                listOf("Terror", "Mistério", "Thriller"),
+                listOf("Ward Horton, Annabelle Wallis, Alfre Woodard"),
+                listOf("John R. Leonetti"),
+                " 135 min",
+                " 2014",
+                R.drawable.anabele,
+                "kHl6aU30pIo"
+        ))
+        movieList.add(Movie(
+                2,
+                "Annabelle",
+                "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
+                3.0F,
+                listOf("Terror", "Mistério", "Thriller"),
+                listOf("Ward Horton, Annabelle Wallis, Alfre Woodard"),
+                listOf("John R. Leonetti"),
+                " 135 min",
+                " 2014",
+                R.drawable.anabele,
+                "kHl6aU30pIo"
+        ))
+        movieList.add(Movie(
+                3,
+                "Annabelle",
+                "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
+                3.0F,
+                listOf("Terror", "Mistério", "Thriller"),
+                listOf("Ward Horton, Annabelle Wallis, Alfre Woodard"),
+                listOf("John R. Leonetti"),
+                " 135 min",
+                " 2014",
+                R.drawable.anabele,
+                "kHl6aU30pIo"
+        ))
+        movieList.add(Movie(
+                4,
+                "Annabelle",
+                "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
+                3.0F,
+                listOf("Terror", "Mistério", "Thriller"),
+                listOf("Ward Horton, Annabelle Wallis, Alfre Woodard"),
+                listOf("John R. Leonetti"),
+                " 135 min",
+                " 2014",
+                R.drawable.anabele,
+                "kHl6aU30pIo"
+        ))
+        movieList.add(Movie(
+                5,
+                "Annabelle",
+                "Em Anabelle, John (Ward Horton) encontrou o presente perfeito para sua futura esposa, Mia (Annabelle Wallis): uma rara boneca antiga com um lindo vestido. Mia fica bastante contente com seu presente, porém, sua animação com a boneca não duraria muito tempo.",
+                3.0F,
+                listOf("Terror", "Mistério", "Thriller"),
+                listOf("Ward Horton, Annabelle Wallis, Alfre Woodard"),
+                listOf("John R. Leonetti"),
+                " 135 min",
+                " 2014",
+                R.drawable.anabele,
+                "kHl6aU30pIo"
+        ))
+        return movieList
     }
 }
