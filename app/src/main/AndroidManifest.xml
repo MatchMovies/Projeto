@@ -20,8 +20,8 @@
         <activity android:name=".view.HomeMovieActivity"/>
         <activity android:name=".view.ForgotPasswordActivity" />
         <activity android:name=".view.LoginActivity"/>
-        <activity android:name=".view.HomeActivity"/>
-            <activity android:name=".view.ProfileActivity">
+        <activity android:name=".view.ProfileActivity"/>
+         <activity android:name=".view.HomeActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
