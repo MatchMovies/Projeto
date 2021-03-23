@@ -28,7 +28,7 @@ class MovieFragment : Fragment() {
 
         initRecycler()
 
-        super.onViewCreated(view, savedInstanceState)
+      //  super.onViewCreated(view, savedInstanceState)
     }
 
     private fun initRecycler() {
