@@ -26,17 +26,16 @@ class HomeFragment : Fragment() {
 
         btnMovie.setOnClickListener {
 
-            val mathFragment =  MatchFragment()
+
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fl_wrapper, mathFragment)
+            transaction.replace(R.id.fl_wrapper, MatchFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
 
         btnSeries.setOnClickListener{
-            val matchFragment = MatchFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fl_wrapper, matchFragment)
+            transaction.replace(R.id.fl_wrapper, MatchFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
