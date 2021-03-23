@@ -11,19 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchMovies">
-
+        <activity android:name=".view.MatchActivity"></activity>
         <activity
             android:name=".view.TrailerActivity"
             android:hardwareAccelerated="true"
             android:theme="@style/Theme.AppCompat.Translucent" /> <!-- <activity android:name=".view.MovieDetailsActivity"></activity> -->
-        <activity android:name=".view.MovieDetailsActivity"/>
-        <activity android:name=".view.HomeMovieActivity"/>
-        <activity android:name=".MatchActivity"/>
-        <activity android:name=".view.ForgotPasswordActivity" />
-        <activity android:name=".ActivityContract" />
-        <activity android:name=".view.LoginActivity"/>
+        <activity android:name=".view.MovieDetailsActivity" />
+        <activity android:name=".view.HomeMovieActivity" />
+        <activity android:name=".view.ForgotPasswordActivity" /> <!-- <activity android:name=".ActivityContract" /> -->
+        <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.HomeActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
