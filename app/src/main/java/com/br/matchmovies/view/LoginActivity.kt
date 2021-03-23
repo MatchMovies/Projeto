@@ -17,11 +17,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initViews() {
 
-        val botao = findViewById<Button>(R.id.btentrar)
+        val btnEntrar = findViewById<Button>(R.id.btentrar)
 
-        botao.setOnClickListener {
+        btnEntrar.setOnClickListener {
 
-          val intent = Intent(this, CadastroActivity::class.java)
+          val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 

@@ -3,6 +3,7 @@ package com.br.matchmovies.fragments
 
 
 import android.os.Bundle
+import android.service.autofill.FieldClassification
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ class HomeFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
         val btnMovie = view.findViewById<View>(R.id.button_ic_home_filme) as Button
+        val btnSeries = view.findViewById<View>(R.id.button_ic_home_series) as Button
 
         btnMovie.setOnClickListener {
 
@@ -30,6 +32,17 @@ class HomeFragment : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
         }
+
+        btnSeries.setOnClickListener{
+            val matchFragment = MatchFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fl_wrapper, matchFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+
+
+
         return view
     }
 
