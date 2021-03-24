@@ -1,6 +1,8 @@
 package com.br.matchmovies.fragments
 
+import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +11,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
+import androidx.lifecycle.Lifecycle
+import androidx.transition.AutoTransition
+import androidx.transition.TransitionManager
 
 import com.br.matchmovies.R
+import kotlin.system.exitProcess
 
 
 class ProfileFragment : Fragment() {
@@ -39,13 +45,12 @@ class ProfileFragment : Fragment() {
         }
 
         btnSair.setOnClickListener {
-        val manager = requireActivity().supportFragmentManager
-        manager.beginTransaction().remove(this).commit()
+            val transition = requireActivity().supportFragmentManager.beginTransaction()
+            transition.remove(this)
+            transition.commit()
         }
 
         btnExp1.setOnClickListener{
-            val btnExp1 = requireActivity().supportFragmentManager.beginTransaction()
-
             if (expLayout1.visibility == View.GONE){
             TransitionManager.beginDelayedTransition(expLayout1 )
             expLayout1.visibility = View.VISIBLE
