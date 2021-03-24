@@ -1,13 +1,18 @@
 package com.br.matchmovies.view
+
 import android.annotation.SuppressLint
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+
 import android.widget.TextView
+
 
 import com.br.matchmovies.R
 
+@SuppressLint("WrongViewCast")
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,26 +22,16 @@ class LoginActivity : AppCompatActivity() {
         initViews()
     }
 
-
-    private fun initViews() {
-
-        val botao = findViewById<Button>(R.id.btentrar)
-
-        botao.setOnClickListener {
-
-          val intent = Intent(this, CadastroActivity::class.java)
-            startActivity(intent)
-        }
-
-
-    @SuppressLint("WrongViewCast")
+   
     private fun initViews() {
 
         val btnEnter = findViewById<Button>(R.id.btentrar)
         btnEnter.setOnClickListener {
+
           val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
+
 
 
         val btnCadastro = findViewById<TextView>(R.id.btcadastrar)
@@ -48,6 +43,7 @@ class LoginActivity : AppCompatActivity() {
         btnEsqueciSenha.setOnClickListener{
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
+
 
     }
 

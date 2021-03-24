@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.br.matchmovies.R
 
-
 class MatchFragment : Fragment() {
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,6 +16,4 @@ class MatchFragment : Fragment() {
 
         return inflater.inflate(R.layout.fragment_match, container, false)
     }
-
-
 }
