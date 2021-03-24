@@ -1,8 +1,7 @@
-package com.br.matchmovies
-import android.content.Intent
+package com.br.matchmovies.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import com.br.matchmovies.R
 
 class PerfilActivity : AppCompatActivity() {
 

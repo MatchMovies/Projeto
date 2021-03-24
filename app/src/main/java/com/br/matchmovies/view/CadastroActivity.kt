@@ -1,7 +1,8 @@
-package com.br.matchmovies
+package com.br.matchmovies.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.br.matchmovies.R
 
 class CadastroActivity : AppCompatActivity() {
 

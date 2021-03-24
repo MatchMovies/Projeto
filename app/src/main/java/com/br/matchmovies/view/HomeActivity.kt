@@ -1,16 +1,12 @@
-package com.br.matchmovies
+package com.br.matchmovies.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.Fragment
+import com.br.matchmovies.R
 import com.br.matchmovies.fragments.HomeFragment
-import com.br.matchmovies.fragments.ListaFragment
 import com.br.matchmovies.fragments.MatchFragment
-import com.br.matchmovies.fragments.MovieFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.zip.Inflater
 
 class HomeActivity : AppCompatActivity() {
 
