@@ -7,7 +7,7 @@ class PerfilActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_perfil)
+        setContentView(R.layout.fragment_profile)
 
     }
 

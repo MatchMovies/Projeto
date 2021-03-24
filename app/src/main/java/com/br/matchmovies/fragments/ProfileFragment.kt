@@ -2,6 +2,8 @@ package com.br.matchmovies.fragments
 
 import android.os.Build
 import android.os.Bundle
+import android.system.Os.close
+import android.system.Os.remove
 import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -23,11 +25,11 @@ class ProfileFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
-        val view : View = inflater.inflate(R.layout.fragment_profile, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
         val btnBack = view.findViewById<View>(R.id.btnvoltar) as Button
         val btnSair = view.findViewById<View>(R.id.ib_sair) as ImageButton
 
@@ -45,26 +47,25 @@ class ProfileFragment : Fragment() {
         }
 
         btnSair.setOnClickListener {
-            val transition = requireActivity().supportFragmentManager.beginTransaction()
-            transition.remove(this)
-            transition.commit()
+           this.requireActivity().finish()
         }
 
-        btnExp1.setOnClickListener{
-            if (expLayout1.visibility == View.GONE){
-            TransitionManager.beginDelayedTransition(expLayout1 )
-            expLayout1.visibility = View.VISIBLE
-        } else {
-            TransitionManager.beginDelayedTransition(expLayout1 )
-            expLayout1.visibility = View.GONE
-          }
+        btnExp1.setOnClickListener {
+
+            if (expLayout1.visibility == View.GONE) {
+                TransitionManager.beginDelayedTransition(expLayout1, AutoTransition())
+                expLayout1.visibility = View.VISIBLE
+            } else {
+                TransitionManager.beginDelayedTransition(expLayout1)
+                expLayout1.visibility = View.GONE
+            }
         }
-        btnExp2.setOnClickListener{
-            if (expLayout2.visibility == View.GONE){
-                TransitionManager.beginDelayedTransition(expLayout2, AutoTransition() )
+        btnExp2.setOnClickListener {
+            if (expLayout2.visibility == View.GONE) {
+                TransitionManager.beginDelayedTransition(expLayout2, AutoTransition())
                 expLayout2.visibility = View.VISIBLE
             } else {
-                TransitionManager.beginDelayedTransition(expLayout2, AutoTransition() )
+                TransitionManager.beginDelayedTransition(expLayout2, AutoTransition())
                 expLayout2.visibility = View.GONE
             }
         }
@@ -73,5 +74,7 @@ class ProfileFragment : Fragment() {
     }
 }
 
-}
+
+
+
 

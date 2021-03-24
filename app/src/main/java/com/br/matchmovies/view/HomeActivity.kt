@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
 
         makeCurrentFragment(HomeFragment())
         bottomNavigationView.setOnNavigationItemReselectedListener {
-
+            when(it.itemId){
                 R.id.ic_home_nav_bar -> makeCurrentFragment(HomeFragment())
                 R.id.ic_match_nav_bar -> makeCurrentFragment(MatchFragment())
                 R.id.ic_movie_nav_bar -> makeCurrentFragment(MovieFragment())
