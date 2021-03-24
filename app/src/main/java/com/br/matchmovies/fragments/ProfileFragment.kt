@@ -1,12 +1,6 @@
-@file:Suppress("UNREACHABLE_CODE")
-
 package com.br.matchmovies.fragments
 
-
-import android.os.Build
 import android.os.Bundle
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -86,3 +80,6 @@ class ProfileFragment : Fragment() {
         return view
     }
 }
+
+}
+

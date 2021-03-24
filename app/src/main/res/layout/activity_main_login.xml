@@ -81,6 +81,10 @@
         </LinearLayout>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
     <TextView
         android:id="@+id/btesqueci"
         android:layout_width="match_parent"
