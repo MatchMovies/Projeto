@@ -7,15 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
-import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
 
 import com.br.matchmovies.R
 
 
 class ProfileFragment : Fragment() {
 
-    @RequiresApi(Build.VERSION_CODES.KITKAT)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -81,5 +79,5 @@ class ProfileFragment : Fragment() {
     }
 }
 
-}
+
 
