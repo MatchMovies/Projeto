@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.br.matchmovies.R
 
 
+
 @Suppress("UNREACHABLE_CODE")
 class HomeFragment : Fragment() {
 
@@ -39,8 +40,6 @@ class HomeFragment : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
         }
-
-
 
         return view
     }

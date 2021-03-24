@@ -1,5 +1,6 @@
 package com.br.matchmovies.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
@@ -9,6 +10,7 @@ import com.br.matchmovies.R
 import com.br.matchmovies.adapter.HomeMovieAdapter
 import com.br.matchmovies.model.ListMovies
 import com.br.matchmovies.model.Movie
+import java.io.Serializable
 
 class HomeMovieActivity : AppCompatActivity() {
 
@@ -32,9 +34,17 @@ class HomeMovieActivity : AppCompatActivity() {
 
         recycler.layoutManager = LinearLayoutManager(this)
 
-        val adapter = HomeMovieAdapter(movieList)
+        val adapter = HomeMovieAdapter(movieList){movie->
+            navigateToMovieDetails(movie)
+        }
         recycler.adapter = adapter
 
+    }
+
+    private fun navigateToMovieDetails(movie: Movie) {
+        val intent = Intent(this, MovieDetailsActivity::class.java)
+        intent.putExtra("movie", movie as Serializable)
+        startActivity(intent)
     }
 
     private fun getMovieList(): MutableList<ListMovies> {

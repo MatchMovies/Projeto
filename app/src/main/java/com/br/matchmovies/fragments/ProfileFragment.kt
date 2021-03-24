@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import com.br.matchmovies.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.br.matchmovies.R
+
 
 
 class ProfileFragment : Fragment() {
@@ -18,8 +20,6 @@ class ProfileFragment : Fragment() {
          : View? {
         // Inflate the layout for this fragment
        return inflater.inflate(R.layout.fragment_profile, container, false)
-
-
-    }
-
+           
+         }
 }

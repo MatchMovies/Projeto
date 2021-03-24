@@ -2,6 +2,8 @@ package com.br.matchmovies.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+
 import com.br.matchmovies.R
 
 class ForgotPasswordActivity : AppCompatActivity() {

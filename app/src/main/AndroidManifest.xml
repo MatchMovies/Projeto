@@ -21,12 +21,31 @@
         <activity android:name=".view.ForgotPasswordActivity" /> <!-- <activity android:name=".ActivityContract" /> -->
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.HomeActivity">
+
+        <activity
+            android:name=".view.TrailerActivity"
+            android:hardwareAccelerated="true"
+            android:theme="@style/Theme.AppCompat.Translucent" />
+        <activity android:name=".view.MovieDetailsActivity"/>
+        <activity android:name=".view.HomeMovieActivity"/>
+<!--        <activity android:name=".MatchActivity"/>-->
+        <activity android:name=".view.ForgotPasswordActivity" />
+<!--        <activity android:name=".ActivityContract" />-->
+        <activity android:name=".view.LoginActivity"/>
+        <activity android:name=".view.HomeActivity">
+        android:theme="@style/Theme.AppCompat.Translucent" /> <!-- <activity android:name=".view.MovieDetailsActivity"></activity> -->
+        <activity android:name=".view.MovieDetailsActivity" />
+        <activity android:name=".view.HomeMovieActivity" />
+        <activity android:name=".view.ForgotPasswordActivity" />
+       <!--  <activity android:name=".ActivityContract" /> -->
+        <activity android:name=".view.LoginActivity" />
+        <activity android:name=".view.CadastroActivity" />
+        <activity android:name=".view.HomeActivity"/>
+        <activity android:name=".view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
