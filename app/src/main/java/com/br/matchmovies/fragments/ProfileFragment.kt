@@ -21,12 +21,6 @@ import com.br.matchmovies.R
 
 class ProfileFragment : Fragment() {
 
-    private lateinit var ib_expandable1: ImageButton
-    private lateinit var expandableLayout: CardView
-    private lateinit var ib_expandable2: ImageButton
-    private lateinit var expandableLayout2: CardView
-
-
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +29,15 @@ class ProfileFragment : Fragment() {
 
         val view : View = inflater.inflate(R.layout.fragment_profile, container, false)
         val btnBack = view.findViewById<View>(R.id.btnvoltar) as Button
+        val btnSair = view.findViewById<View>(R.id.ib_sair) as ImageButton
+/*
+        val btnExp1 = view.findViewById<View>(R.id.ib_expandable1) as ImageButton
+        val btnExp2 = view.findViewById<View>(R.id.ib_expandable2) as ImageButton
+        val btnExp3 = view.findViewById<View>(R.id.ib_expandable3) as ImageButton
+        val expLayout1 = view.findViewById<View>(R.id.cardViewdp) as CardView
+        val expLayout2 = view.findViewById<View>(R.id.cardViewmm) as CardView
+        val expLayout3 = view.findViewById<View>(R.id.cardViewgc) as CardView*/
+
 
         btnBack.setOnClickListener {
 
@@ -44,32 +47,42 @@ class ProfileFragment : Fragment() {
             transition.commit()
         }
 
-  /*
-        ib_expandable1.setOnClickListener{
-            if (expandableLayout.visibility == View.GONE){
-                TransitionManager.beginDelayedTransition(expandableLayout, AutoTransition() )
-                expandableLayout.visibility = View.VISIBLE
+        btnSair.setOnClickListener {
+        val manager = requireActivity().supportFragmentManager
+        manager.beginTransaction().remove(this).commit()
+        }
+/*
+
+        btnExp1.setOnClickListener{
+            if (expLayout1.visibility == View.GONE){
+            TransitionManager.beginDelayedTransition(expLayout1, AutoTransition() )
+            expLayout1.visibility = View.VISIBLE
+        } else {
+            TransitionManager.beginDelayedTransition(expLayout2, AutoTransition() )
+            expLayout2.visibility = View.GONE
+          }
+        }
+        btnExp2.setOnClickListener{
+            if (expLayout2.visibility == View.GONE){
+                TransitionManager.beginDelayedTransition(expLayout2, AutoTransition() )
+                expLayout2.visibility = View.VISIBLE
             } else {
-                TransitionManager.beginDelayedTransition(expandableLayout, AutoTransition() )
-                expandableLayout.visibility = View.GONE
+                TransitionManager.beginDelayedTransition(expLayout2, AutoTransition() )
+                expLayout2.visibility = View.GONE
             }
         }
-        ib_expandable2.setOnClickListener{
-            if (expandableLayout2.visibility == View.GONE){
-                TransitionManager.beginDelayedTransition(expandableLayout2, AutoTransition() )
-                expandableLayout2.visibility = View.VISIBLE
+        btnExp3.setOnClickListener{
+            if (expLayout3.visibility == View.GONE){
+                TransitionManager.beginDelayedTransition(expLayout3, AutoTransition() )
+                expLayout3.visibility = View.VISIBLE
             } else {
-                TransitionManager.beginDelayedTransition(expandableLayout2, AutoTransition() )
-                expandableLayout2.visibility = View.GONE
+                TransitionManager.beginDelayedTransition(expLayout3, AutoTransition() )
+                expLayout3.visibility = View.GONE
             }
-        } */
+        }*/
+
+
 
         return view
-
-
-
-     //   btnvoltar.setOnClickListener {
-     //       onBackPressed()}
-
     }
 }
