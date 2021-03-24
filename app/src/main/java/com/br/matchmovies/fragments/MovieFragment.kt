@@ -15,10 +15,10 @@ import com.br.matchmovies.model.ListMovies
 import com.br.matchmovies.model.Movie
 import com.br.matchmovies.view.MovieDetailsActivity
 
-
 class MovieFragment : Fragment() {
 
     private val recycler by lazy { view?.findViewById<RecyclerView>(R.id.rv_list_of_movie_list) }
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -133,5 +133,6 @@ class MovieFragment : Fragment() {
         ))
         return movieList
     }
+
 
 }
