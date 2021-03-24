@@ -1,10 +1,11 @@
-package com.br.matchmovies
+package com.br.matchmovies.view
 
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import androidx.fragment.app.Fragment
+import com.br.matchmovies.R
 import com.br.matchmovies.fragments.HomeFragment
 
 import com.br.matchmovies.fragments.MatchFragment
