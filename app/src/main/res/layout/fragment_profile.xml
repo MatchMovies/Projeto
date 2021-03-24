@@ -40,7 +40,7 @@
             tools:layout_editor_absoluteY="-69dp">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewcontato"
+                android:id="@+id/cardViewmg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="76dp"
@@ -74,6 +74,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -119,6 +120,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -494,6 +496,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -615,7 +618,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewcontato"
+                android:id="@+id/cardViewmg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -649,6 +652,7 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="8dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -662,7 +666,6 @@
                 android:id="@+id/ib_sair"
                 android:layout_width="74dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginBottom="60dp"
                 android:background="#00FFFFFF"
                 android:scaleType="centerCrop"

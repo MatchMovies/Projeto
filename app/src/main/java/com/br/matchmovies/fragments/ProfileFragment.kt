@@ -24,14 +24,11 @@ class ProfileFragment : Fragment() {
         val view : View = inflater.inflate(R.layout.fragment_profile, container, false)
         val btnBack = view.findViewById<View>(R.id.btnvoltar) as Button
         val btnSair = view.findViewById<View>(R.id.ib_sair) as ImageButton
-/*
+
         val btnExp1 = view.findViewById<View>(R.id.ib_expandable1) as ImageButton
         val btnExp2 = view.findViewById<View>(R.id.ib_expandable2) as ImageButton
-        val btnExp3 = view.findViewById<View>(R.id.ib_expandable3) as ImageButton
         val expLayout1 = view.findViewById<View>(R.id.cardViewdp) as CardView
         val expLayout2 = view.findViewById<View>(R.id.cardViewmm) as CardView
-        val expLayout3 = view.findViewById<View>(R.id.cardViewgc) as CardView*/
-
 
         btnBack.setOnClickListener {
 
@@ -45,15 +42,16 @@ class ProfileFragment : Fragment() {
         val manager = requireActivity().supportFragmentManager
         manager.beginTransaction().remove(this).commit()
         }
-/*
 
         btnExp1.setOnClickListener{
+            val btnExp1 = requireActivity().supportFragmentManager.beginTransaction()
+
             if (expLayout1.visibility == View.GONE){
-            TransitionManager.beginDelayedTransition(expLayout1, AutoTransition() )
+            TransitionManager.beginDelayedTransition(expLayout1 )
             expLayout1.visibility = View.VISIBLE
         } else {
-            TransitionManager.beginDelayedTransition(expLayout2, AutoTransition() )
-            expLayout2.visibility = View.GONE
+            TransitionManager.beginDelayedTransition(expLayout1 )
+            expLayout1.visibility = View.GONE
           }
         }
         btnExp2.setOnClickListener{
@@ -65,17 +63,6 @@ class ProfileFragment : Fragment() {
                 expLayout2.visibility = View.GONE
             }
         }
-        btnExp3.setOnClickListener{
-            if (expLayout3.visibility == View.GONE){
-                TransitionManager.beginDelayedTransition(expLayout3, AutoTransition() )
-                expLayout3.visibility = View.VISIBLE
-            } else {
-                TransitionManager.beginDelayedTransition(expLayout3, AutoTransition() )
-                expLayout3.visibility = View.GONE
-            }
-        }*/
-
-
 
         return view
     }
