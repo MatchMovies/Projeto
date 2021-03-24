@@ -32,7 +32,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="-69dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewcontato"
@@ -68,13 +72,13 @@
                         android:id="@+id/ib_expandable4"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="4dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="VectorDrawableCompat"
-                        tools:layout_editor_absoluteY="15dp" />
+                        tools:ignore="VectorDrawableCompat" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -113,13 +117,13 @@
                         android:id="@+id/ib_expandable2"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="4dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="VectorDrawableCompat"
-                        tools:layout_editor_absoluteY="20dp" />
+                        tools:ignore="VectorDrawableCompat" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -488,13 +492,13 @@
                         android:id="@+id/ib_expandable1"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="4dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="VectorDrawableCompat"
-                        tools:layout_editor_absoluteY="15dp" />
+                        tools:ignore="VectorDrawableCompat" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -643,13 +647,13 @@
                         android:id="@+id/ib_expandable4"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="4dp"
                         android:background="#0AFFFFFF"
                         android:tint="#FC737373"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="DuplicateIds,VectorDrawableCompat"
-                        tools:layout_editor_absoluteY="15dp" />
+                        tools:ignore="DuplicateIds,VectorDrawableCompat" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -657,20 +661,24 @@
                 android:id="@+id/ib_sair"
                 android:layout_width="74dp"
                 android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="60dp"
                 android:background="#00FFFFFF"
                 android:scaleType="centerCrop"
                 android:tint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_sair"
                 app:srcCompat="@drawable/ic_launcher_sair_foreground"
-                tools:layout_editor_absoluteX="121dp"
                 tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
             <TextView
                 android:id="@+id/tv_sair"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="88dp"
                 android:text="Sair do App"
                 android:textSize="20dp"
                 android:textStyle="bold"
