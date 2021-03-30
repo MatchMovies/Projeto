@@ -1,699 +1,956 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:animateLayoutChanges="true"
     android:background="@color/CorFundo"
-    android:orientation="vertical"
     tools:context=".view.ProfileActivity">
-
-    <Button
-        android:id="@+id/btnvoltar"
-        android:layout_width="38dp"
-        android:layout_height="41dp"
-        android:background="@drawable/ic_baseline_arrow_back_24"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.01"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <Button
+            android:id="@+id/btn_voltar"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            app:backgroundTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="8dp" />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ib_exit"
+            android:layout_width="56dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/CorFundo"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_launcher_sair_foreground"
+            android:tint="@color/CorTexto"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardview_contato"
+            app:layout_constraintVertical_bias="0.698"
+            android:layout_marginLeft="8dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:text="Sair"
+            android:textAlignment="textStart"
+            android:textColor="#FBFBFB"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ib_exit"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="-69dp">
+            app:layout_constraintTop_toBottomOf="@+id/cardview_contato"
+            app:layout_constraintVertical_bias="0.673"
+            android:gravity="start" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewmg"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_voltar">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="76dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewmm"
-                tools:ignore="MissingConstraints">
+                android:orientation="vertical">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="385dp"
-                    android:layout_height="60dp">
-
-                    <TextView
-                        android:id="@+id/textView_contato"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Contato"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints" />
-
-                    <ImageButton
-                        android:id="@+id/ib_expandable4"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="#0AFFFFFF"
-                        android:tint="#FC737373"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="VectorDrawableCompat" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewmm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.571"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewdp"
-                tools:ignore="MissingConstraints">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="385dp"
-                    android:layout_height="60dp">
-
-                    <TextView
-                        android:id="@+id/textView_meusMatches"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Meus Match's"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints" />
-                    z'
-
-                    <ImageButton
-                        android:id="@+id/ib_expandable2"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="#0AFFFFFF"
-                        android:tint="#FC737373"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="VectorDrawableCompat" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/expandableLayout2"
+                    android:id="@+id/constraintViewCard"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:visibility="gone">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/linearLayout2"
-                        android:layout_width="match_parent"
-                        android:layout_height="433dp"
-                        android:layout_gravity="center"
-                        tools:layout_editor_absoluteY="4dp">
-
-
-                        <TextView
-                            android:id="@+id/tv_meus_filmes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:text="Meus Filmes:"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/black"
-                            android:textSize="22dp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme"
-                            app:layout_constraintEnd_toStartOf="@+id/tn_matchs"
-                            app:layout_constraintHorizontal_bias="0.259"
-                            app:layout_constraintStart_toEndOf="@+id/iv_filmes"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <ImageView
-                            android:id="@+id/iv_matchs"
-                            android:layout_width="44dp"
-                            android:layout_height="43dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginBottom="16dp"
-                            android:src="@drawable/amei"
-                            app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <EditText
-                            android:id="@+id/tn_matchs"
-                            android:layout_width="38dp"
-                            android:layout_height="43dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="16dp"
-                            android:ems="10"
-                            android:text="32"
-                            android:textAlignment="center"
-                            android:textColor="@color/black"
-                            app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme"
-                            app:layout_constraintEnd_toStartOf="@+id/iv_matchs"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <ImageView
-                            android:id="@+id/iv_filmes"
-                            android:layout_width="44dp"
-                            android:layout_height="43dp"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="16dp"
-                            android:src="@drawable/ic_filme"
-                            app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
-
-                        <ImageView
-                            android:id="@+id/iv_romance"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_baseline_favorite_24"
-                            app:tint="@color/purple_900"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="24dp"
-                            tools:layout_editor_absoluteY="91dp" />
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:text="Romance"
-                            android:textColor="#000000"
-                            app:layout_constraintStart_toStartOf="parent"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteY="145dp" />
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginEnd="24dp"
-                            android:text="Comédia"
-                            android:textColor="#000000"
-                            app:layout_constraintEnd_toStartOf="@+id/textView5"
-                            app:layout_constraintHorizontal_bias="0.305"
-                            app:layout_constraintStart_toEndOf="@+id/textView2"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteY="145dp" />
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginEnd="24dp"
-                            android:text="Ação"
-                            android:textColor="#000000"
-                            app:layout_constraintEnd_toStartOf="@+id/textView6"
-                            app:layout_constraintHorizontal_bias="0.974"
-                            app:layout_constraintStart_toEndOf="@+id/textView2"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteY="145dp" />
-
-                        <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:text="Documentário"
-                            android:textColor="#000000"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteY="145dp" />
-
-                        <ImageView
-                            android:id="@+id/comedia"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_launcher_comedia_foreground"
-                            app:tint="#FBC02D"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="114dp"
-                            tools:layout_editor_absoluteY="91dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_acao"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:background="#FFFFFF"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_launcher_acao_foreground"
-                            app:tint="#090909"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="201dp"
-                            tools:layout_editor_absoluteY="91dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_doc"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_launcher_desenho_foreground"
-                            app:tint="#512DA8"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="298dp"
-                            tools:layout_editor_absoluteY="91dp" />
-
-                        <TextView
-                            android:id="@+id/tv_meus_generos_filme2"
-                            android:layout_width="274dp"
-                            android:layout_height="37dp"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="8dp"
-                            android:text="Meus generos favoritos:"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/black"
-                            android:textSize="22dp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_meus_filmes" />
-
-                        <ImageView
-                            android:id="@+id/iv_comida"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_launcher_alimentos_foreground"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="114dp"
-                            tools:layout_editor_absoluteY="326dp" />
-
-                        <TextView
-                            android:id="@+id/tv_meus_generos_filme"
-                            android:layout_width="274dp"
-                            android:layout_height="37dp"
-                            android:text="Meus generos favoritos:"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/black"
-                            android:textSize="22dp"
-                            android:textStyle="bold"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="25dp"
-                            tools:layout_editor_absoluteY="282dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_matchs_series"
-                            android:layout_width="44dp"
-                            android:layout_height="43dp"
-                            android:layout_marginEnd="16dp"
-                            android:src="@drawable/amei"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteY="229dp" />
-
-                        <TextView
-                            android:id="@+id/tv_reforma"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            android:text="Reforma"
-                            android:textColor="#020202"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="283dp" />
-
-                        <TextView
-                            android:id="@+id/tv_comida"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Comida"
-                            android:textColor="#020202"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="114dp"
-                            tools:layout_editor_absoluteY="400dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_medico"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_launcher_doctor_foreground"
-                            app:tint="#D32F2F"
-                            tools:layout_editor_absoluteX="25dp"
-                            tools:layout_editor_absoluteY="327dp" />
-
-                        <TextView
-                            android:id="@+id/tv_ficcao"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Comida"
-                            android:textColor="#020202"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="202dp"
-                            tools:layout_editor_absoluteY="400dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_reforma"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_launcher_reforma_foreground"
-                            app:tint="@color/purple_900"
-                            tools:layout_editor_absoluteX="283dp"
-                            tools:layout_editor_absoluteY="327dp" />
-
-                        <TextView
-                            android:id="@+id/tv_minhas_series"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Minhas Séries:"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/black"
-                            android:textSize="22dp"
-                            android:textStyle="bold"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="74dp"
-                            tools:layout_editor_absoluteY="242dp" />
-
-                        <TextView
-                            android:id="@+id/tv_medico"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Médico"
-                            android:textColor="#020202"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="32dp"
-                            tools:layout_editor_absoluteY="400dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_series"
-                            android:layout_width="44dp"
-                            android:layout_height="43dp"
-                            android:layout_marginStart="16dp"
-                            android:src="@drawable/ic_serie"
-                            app:layout_constraintStart_toStartOf="parent"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteY="229dp" />
-
-                        <EditText
-                            android:id="@+id/tn_matchs_series"
-                            android:layout_width="38dp"
-                            android:layout_height="43dp"
-                            android:ems="10"
-                            android:text="8"
-                            android:textAlignment="center"
-                            android:textColor="@color/black"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="245dp"
-                            tools:layout_editor_absoluteY="229dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_ficcao"
-                            android:layout_width="56dp"
-                            android:layout_height="54dp"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_launcher_fantasia_foreground"
-                            app:tint="#7B1FA2"
-                            tools:ignore="MissingConstraints"
-                            tools:layout_editor_absoluteX="202dp"
-                            tools:layout_editor_absoluteY="327dp" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.101"
-                tools:ignore="MissingConstraints">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="385dp"
-                    android:layout_height="60dp">
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/textView_dadosPessoais"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_dadosPessoais"
+                        android:layout_width="358dp"
+                        android:layout_height="30dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
                         android:text="Dados Pessoais"
-                        android:textColor="@color/black"
+                        android:textColor="#000000"
                         android:textSize="20dp"
                         android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="MissingConstraints" />
-
-                    <ImageButton
-                        android:id="@+id/ib_expandable1"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="#0AFFFFFF"
-                        android:tint="#FC737373"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="VectorDrawableCompat" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/buttonExpand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/ic_baseline_expand_more_24"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.988"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3"
+                        tools:src="@drawable/ic_baseline_expand_more_24"
+                        android:layout_marginRight="8dp" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/expandableLayout"
+                    android:id="@+id/constraintViewMoreInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
                     android:visibility="gone">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imageView_profile"
                         android:layout_width="90dp"
                         android:layout_height="112dp"
+                        android:layout_marginTop="4dp"
                         android:src="@drawable/img_profile"
                         android:tint="#FFFFFF"
                         app:civ_border_color="#ff000000"
                         app:civ_border_width="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.498"
+                        app:layout_constraintHorizontal_bias="0.546"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteY="-8dp" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingClass" />
 
                     <ImageView
                         android:id="@+id/imageView7"
-                        android:layout_width="40dp"
-                        android:layout_height="41dp"
+                        android:layout_width="50dp"
+                        android:layout_height="49dp"
                         android:src="@android:drawable/ic_menu_camera"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_name"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.61"
+                        app:layout_constraintHorizontal_bias="0.635"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:tint="#25FFFFFF"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteY="53dp" />
+                        app:layout_constraintTop_toTopOf="@+id/imageView_profile"
+                        app:layout_constraintVertical_bias="0.776"
+                        app:tint="#D0292424"
+                        tools:ignore="MissingConstraints" />
 
                     <TextView
                         android:id="@+id/tv_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="16dp"
                         android:text="Nome: Daina Santos"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:layout_editor_absoluteY="117dp" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView_profile"
+                        android:gravity="center_horizontal" />
 
                     <TextView
                         android:id="@+id/tv_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="16dp"
                         android:text="Email: daiana.santos@mail.com"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.156"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        tools:layout_editor_absoluteY="149dp" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                        android:gravity="center_horizontal" />
 
                     <TextView
                         android:id="@+id/tv_contaFacebook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="Conta cadastrada"
+                        android:layout_marginTop="8dp"
+                        android:text="Conta cadastrada:"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView_google"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.793" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_email"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="center_horizontal" />
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/imageView_google"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
                         android:layout_marginStart="200dp"
+                        android:layout_marginTop="8dp"
                         android:src="@drawable/face"
+                        app:layout_constraintEnd_toStartOf="@+id/imageView_facebook"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_email"
                         app:tint="@color/CorFundo"
-                        tools:layout_editor_absoluteY="176dp" />
-
-                    <TextView
-                        android:id="@+id/tv_contaGoogle2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Editar Perfil"
-                        android:textAlignment="textStart"
-                        android:textColor="#606060"
-                        android:textSize="22dp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        tools:layout_editor_absoluteY="223dp" />
+                        android:layout_marginLeft="200dp" />
 
                     <ImageView
-                        android:id="@+id/imageView9"
+                        android:id="@+id/imageView_facebook"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:layout_marginStart="248dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
                         android:src="@drawable/faceboo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.766"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:tint="@color/CorFundo"
-                        tools:layout_editor_absoluteY="176dp" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_email"
+                        app:tint="@color/CorFundo" />
+
+                    <Button
+                        android:id="@+id/btn_editarPerfil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Editar Perfil"
+                        android:textAlignment="viewStart"
+                        android:textColor="#1B1A1A"
+                        android:textStyle="bold"
+                        app:backgroundTint="#FFFFFF"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.035"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_contaFacebook"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:rippleColor="#000000"
+                        android:gravity="start" />
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardViewmg"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_mm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardview_dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardViewmm"
-                tools:ignore="DuplicateIds,MissingConstraints">
+                android:orientation="vertical">>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="385dp"
-                    android:layout_height="60dp">
+                    android:id="@+id/constraintViewCard2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/textView_contato"
+                        android:id="@+id/tv_meusMatchs"
+                        android:layout_width="358dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Meus Match's"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:layout_marginLeft="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/buttonExpand2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/ic_baseline_expand_more_24"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.988"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3"
+                        tools:src="@drawable/ic_baseline_expand_more_24"
+                        android:layout_marginRight="8dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintViewMoreInfoMm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_matchs"
+                        android:layout_width="44dp"
+                        android:layout_height="43dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@drawable/amei"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_meus_filmes"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:layout_marginRight="16dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_filmes"
+                        android:layout_width="42dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_filme"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_meus_filmes"
+                        app:layout_constraintHorizontal_bias="0.163"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_meus_filmes"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:layout_marginLeft="16dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_romance"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="16dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_baseline_favorite_24"
+                        app:layout_constraintEnd_toStartOf="@+id/comedia"
+                        app:layout_constraintHorizontal_bias="0.222"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
+                        app:tint="#D32F2F"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="16dp" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:text="Comédia"
+                        android:textColor="#000000"
+                        app:layout_constraintEnd_toStartOf="@+id/textView5"
+                        app:layout_constraintHorizontal_bias="0.27"
+                        app:layout_constraintStart_toEndOf="@+id/textView2"
+                        app:layout_constraintTop_toBottomOf="@+id/comedia"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        android:text="Documentário"
+                        android:textColor="#000000"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_doc"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginRight="12dp" />
+
+                    <TextView
+                        android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Meus gifts"
-                        android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:text="Romance"
+                        android:textColor="#000000"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:ignore="DuplicateIds,MissingConstraints" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_romance"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="16dp" />
 
-                    <ImageButton
-                        android:id="@+id/ib_expandable4"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_marginEnd="4dp"
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:text="Ação"
+                        android:textColor="#000000"
+                        app:layout_constraintEnd_toStartOf="@+id/textView6"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/textView3"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_acao"
+                        tools:ignore="MissingConstraints" />
+
+                    <ImageView
+                        android:id="@+id/iv_acao"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="16dp"
+                        android:background="#FFFFFF"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_launcher_acao_foreground"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_doc"
+                        app:layout_constraintHorizontal_bias="0.829"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
+                        app:tint="#090909"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="16dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_doc"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:scaleType="fitStart"
+                        android:src="@drawable/ic_launcher_desenho_foreground"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.95"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
+                        app:tint="#512DA8"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginRight="16dp" />
+
+                    <ImageView
+                        android:id="@+id/comedia"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:scaleType="fitEnd"
+                        android:src="@drawable/ic_launcher_comedia_foreground"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_acao"
+                        app:layout_constraintHorizontal_bias="0.703"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
+                        app:tint="#FBC02D"
+                        tools:ignore="MissingConstraints" />
+
+                    <ImageView
+                        android:id="@+id/iv_comida"
+                        android:layout_width="56dp"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="31dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_launcher_alimentos_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_reforma"
+                        app:layout_constraintHorizontal_bias="0.084"
+                        app:layout_constraintStart_toEndOf="@+id/iv_medico"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="31dp" />
+
+                    <TextView
+                        android:id="@+id/tv_meus_generos_filme"
+                        android:layout_width="274dp"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Meus generos favoritos:"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_minhas_series"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="start" />
+
+                    <ImageView
+                        android:id="@+id/iv_matchs_series"
+                        android:layout_width="44dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/amei"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginRight="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_reforma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
                         android:layout_marginBottom="8dp"
-                        android:background="#0AFFFFFF"
-                        android:tint="#FC737373"
+                        android:text="Reforma"
+                        android:textColor="#020202"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:srcCompat="@drawable/ic_launcher_down_foreground"
-                        tools:ignore="DuplicateIds,VectorDrawableCompat" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_reforma"
+                        app:layout_constraintVertical_bias="1.0"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginRight="24dp" />
+
+                    <TextView
+                        android:id="@+id/tv_comida"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="48dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Comida"
+                        android:textColor="#020202"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_ficcao"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_comida"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginRight="48dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_medico"
+                        android:layout_width="56dp"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="4dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_launcher_doctor_foreground"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
+                        app:tint="#D32F2F"
+                        android:layout_marginLeft="24dp" />
+
+                    <TextView
+                        android:id="@+id/tv_ficcao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Ficção"
+                        android:textColor="#020202"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_reforma"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_ficcao"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginRight="40dp" />
+
+                    <ImageView
+                        android:id="@+id/iv_reforma"
+                        android:layout_width="56dp"
+                        android:layout_height="54dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_launcher_reforma_foreground"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.631"
+                        app:layout_constraintStart_toEndOf="@+id/iv_ficcao"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
+                        app:layout_constraintVertical_bias="0.321"
+                        app:tint="@color/purple_900"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_minhas_series"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="48dp"
+                        android:text="Minhas Séries:"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/tn_matchs_series"
+                        app:layout_constraintHorizontal_bias="0.985"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginRight="48dp"
+                        android:gravity="start" />
+
+                    <TextView
+                        android:id="@+id/tv_medico"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="Médico"
+                        android:textColor="#020202"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_comida"
+                        app:layout_constraintHorizontal_bias="0.384"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_medico"
+                        tools:ignore="MissingConstraints" />
+
+                    <ImageView
+                        android:id="@+id/iv_series"
+                        android:layout_width="44dp"
+                        android:layout_height="43dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:src="@drawable/ic_serie"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_minhas_series"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView2"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginLeft="16dp" />
+
+                    <EditText
+                        android:id="@+id/tn_matchs_series"
+                        android:layout_width="38dp"
+                        android:layout_height="43dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:ems="10"
+                        android:text="8"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_matchs_series"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginRight="16dp"
+                        android:gravity="center_horizontal" />
+
+                    <ImageView
+                        android:id="@+id/iv_ficcao"
+                        android:layout_width="56dp"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_launcher_fantasia_foreground"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.53"
+                        app:layout_constraintStart_toEndOf="@+id/iv_medico"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
+                        app:tint="#7B1FA2"
+                        tools:ignore="MissingConstraints" />
+
+
+                    <TextView
+                        android:id="@+id/tv_meus_generos_filme2"
+                        android:layout_width="274dp"
+                        android:layout_height="37dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Meus generos favoritos:"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.152"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_meus_filmes"
+                        android:layout_marginLeft="16dp"
+                        android:gravity="start" />
+
+                    <TextView
+                        android:id="@+id/tv_meus_filmes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="36dp"
+                        android:text="Meus Filmes:"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/tn_matchs"
+                        app:layout_constraintHorizontal_bias="0.635"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="36dp"
+                        android:gravity="start" />
+
+                    <EditText
+                        android:id="@+id/tn_matchs"
+                        android:layout_width="38dp"
+                        android:layout_height="43dp"
+                        android:ems="10"
+                        android:text="32"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@+id/tn_matchs_series"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_matchs"
+                        app:layout_constraintHorizontal_bias="0.943"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_meus_filmes"
+                        app:layout_constraintVertical_bias="0.0"
+                        android:gravity="center_horizontal" />
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <ImageButton
-                android:id="@+id/ib_sair"
-                android:layout_width="74dp"
-                android:layout_height="80dp"
-                android:layout_marginBottom="60dp"
-                android:background="#00FFFFFF"
-                android:scaleType="centerCrop"
-                android:tint="#FFFFFF"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_sair"
-                app:srcCompat="@drawable/ic_launcher_sair_foreground"
-                tools:ignore="MissingConstraints,VectorDrawableCompat" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_gc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardview_mm">
 
-            <TextView
-                android:id="@+id/tv_sair"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="88dp"
-                android:text="Sair do App"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:orientation="vertical">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintViewCardgc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_giftcards"
+                        android:layout_width="358dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Gift Card's"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/buttonExpand3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/ic_baseline_expand_more_24"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.988"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3"
+                        tools:src="@drawable/ic_baseline_expand_more_24"
+                        android:layout_marginRight="8dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintViewMoreInfogc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_emconstrucao1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Em construção"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:gravity="center_horizontal">
+
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_launcher_reforma_foreground"
+                        tools:ignore="VectorDrawableCompat">
+
+                    </ImageView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_contato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardview_gc">>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintViewCardcontato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_contato"
+                        android:layout_width="358dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="Contato"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginLeft="16dp" />
+
+                    <ImageButton
+                        android:id="@+id/buttonExpand4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/ic_baseline_expand_more_24"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.988"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3"
+                        tools:src="@drawable/ic_baseline_expand_more_24"
+                        android:layout_marginRight="8dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintViewMoreInfocontato"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_emconstrucao2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Em construção"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:gravity="center_horizontal">
+
+                    </TextView>
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_launcher_reforma_foreground"
+                        tools:ignore="VectorDrawableCompat">
+
+                    </ImageView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</FrameLayout>
 
+</FrameLayout>
