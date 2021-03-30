@@ -1,60 +1,63 @@
 package com.br.matchmovies.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import java.io.Serializable
+import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
+import com.br.matchmovies.adapter.HomeMovieAdapter
+import com.br.matchmovies.model.Movie
+import com.br.matchmovies.view.MovieDetailsActivity
+import com.br.matchmovies.viewmodel.MoviesViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MovieFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MovieFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val recycler by lazy { view?.findViewById<RecyclerView>(R.id.rv_list_of_movie_list) }
+    private lateinit var viewModel: MoviesViewModel
+
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_movie, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MovieFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MovieFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        viewModel = ViewModelProvider(this).get(MoviesViewModel::class.java)
+
+        configureView()
+        initRecycler()
+        super.onViewCreated(view, savedInstanceState)
     }
+
+    private fun configureView() {
+        recycler?.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun initRecycler() {
+
+        viewModel.moviesLiveData.observe(this){movieList->
+
+            val adapter = HomeMovieAdapter(movieList){movie->
+                navigateToMovieDetails(movie)
+            }
+            recycler?.adapter = adapter
+        }
+    }
+
+    private fun navigateToMovieDetails(movie: Movie) {
+        val intent = Intent(requireContext(), MovieDetailsActivity::class.java)
+        intent.putExtra("movie", movie as Serializable)
+        startActivity(intent)
+    }
+
 }
