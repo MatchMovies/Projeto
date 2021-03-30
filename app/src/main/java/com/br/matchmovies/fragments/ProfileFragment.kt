@@ -5,11 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+
+
+
 import com.br.matchmovies.R
 
 class ProfileFragment : Fragment() {
+
 
     lateinit var constraintViewMoreInfo: ConstraintLayout
     lateinit var constraintViewCard: ConstraintLayout
@@ -77,5 +82,6 @@ class ProfileFragment : Fragment() {
         constraintViewMoreInfo.visibility = View.VISIBLE
         buttonExpandView.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
     }
+
 
 }
