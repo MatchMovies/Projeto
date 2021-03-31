@@ -44,6 +44,7 @@ class ProfileFragment : Fragment() {
             transition.addToBackStack(null)
             transition.commit()
         }
+
         btnEditProfile.setOnClickListener {
             val transition = requireActivity().supportFragmentManager.beginTransaction()
             transition.replace(R.id.fl_wrapper, HomeFragment())
@@ -61,6 +62,13 @@ class ProfileFragment : Fragment() {
                 true -> retractCardview()
             }
         }
+
+        constraintViewCard2.setOnClickListener {
+            when (viewVisibleMm) {
+                false -> expandCardview2()
+                true -> retractCardview2()
+            }
+        }
         return viewFragment
     }
 
@@ -68,19 +76,37 @@ class ProfileFragment : Fragment() {
         constraintViewMoreInfo = viewFragment.findViewById(R.id.constraintViewMoreInfo)
         constraintViewCard = viewFragment.findViewById(R.id.constraintViewCard)
         buttonExpandView = viewFragment.findViewById(R.id.buttonExpand)
+
+        constraintViewMoreInfoMm = viewFragment.findViewById(R.id.constraintViewMoreInfoMm)
+        constraintViewCard2 = viewFragment.findViewById(R.id.constraintViewCard2)
+        buttonExpandView2 = viewFragment.findViewById(R.id.buttonExpand2)
+
+
     }
 
     private fun retractCardview() {
         viewVisible = false
         constraintViewMoreInfo.visibility = View.GONE
         buttonExpandView.setBackgroundResource(R.drawable.ic_baseline_expand_more_24)
-    }
 
+    }
+    private fun retractCardview2(){
+        viewVisibleMm = false
+        constraintViewMoreInfoMm.visibility = View.GONE
+        buttonExpandView2.setBackgroundResource(R.drawable.ic_baseline_expand_more_24)
+    }
 
     private fun expandCardview() {
         viewVisible = true
         constraintViewMoreInfo.visibility = View.VISIBLE
         buttonExpandView.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
+
+    }
+
+    private fun expandCardview2(){
+        viewVisibleMm = true
+        constraintViewMoreInfoMm.visibility = View.VISIBLE
+        buttonExpandView2.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
     }
 
 
