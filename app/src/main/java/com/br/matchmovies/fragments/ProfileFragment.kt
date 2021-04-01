@@ -1,4 +1,5 @@
 package com.br.matchmovies.fragments
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,10 @@ import androidx.fragment.app.Fragment
 
 
 import com.br.matchmovies.R
+import com.br.matchmovies.model.Movie
+import com.br.matchmovies.view.CadastroActivity
+import com.br.matchmovies.view.MovieDetailsActivity
+import java.io.Serializable
 
 class ProfileFragment : Fragment() {
 
@@ -52,11 +57,10 @@ class ProfileFragment : Fragment() {
 
 
         btnEditProfile.setOnClickListener {
-            val transition = requireActivity().supportFragmentManager.beginTransaction()
-            transition.replace(R.id.fl_wrapper, HomeFragment())
-            transition.addToBackStack(null)
-            transition.commit()
-        }
+                val intent = Intent(requireContext(), CadastroActivity::class.java)
+                startActivity(intent)
+            }
+
         btnSair.setOnClickListener {
             this.onDestroy()
         }
@@ -157,3 +161,5 @@ class ProfileFragment : Fragment() {
 
 
 }
+
+
