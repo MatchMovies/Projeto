@@ -2,11 +2,7 @@ package com.br.matchmovies.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.br.matchmovies.R
-import com.br.matchmovies.model.ListMovies
-import com.br.matchmovies.model.Movie
-import com.br.matchmovies.model.MovieConfiguration
-import com.br.matchmovies.model.MovieDetailsList
+import com.br.matchmovies.model.modelDetailsList.MovieDetailsList
 import com.br.matchmovies.repository.RepositoryApi
 import com.br.matchmovies.repository.SingletonConfiguration
 import kotlinx.coroutines.CoroutineScope
