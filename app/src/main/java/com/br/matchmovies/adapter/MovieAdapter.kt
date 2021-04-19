@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
-import com.br.matchmovies.model.Item
+import com.br.matchmovies.model.modelDetailsList.Item
 import com.br.matchmovies.repository.SingletonConfiguration
 import com.squareup.picasso.Picasso
 
@@ -26,7 +26,7 @@ class MovieAdapter(private val movieList: List<Item>, val callback: (Item) -> Un
         val movie = movieList[position]
 
         val configuration = SingletonConfiguration.config
-        var imageUrl = "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(3)}${movie.poster_path}"
+        val imageUrl = "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(3)}${movie.poster_path}"
 
         Picasso.get().load(imageUrl).into(holder.imageview)
 

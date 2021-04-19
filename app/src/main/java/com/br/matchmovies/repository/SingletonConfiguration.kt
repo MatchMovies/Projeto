@@ -1,6 +1,6 @@
 package com.br.matchmovies.repository
 
-import com.br.matchmovies.model.MovieConfiguration
+import com.br.matchmovies.model.modelConfiguration.MovieConfiguration
 
 object SingletonConfiguration {
 

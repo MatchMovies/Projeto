@@ -1,6 +1,5 @@
 package com.br.matchmovies.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,10 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
-import com.br.matchmovies.model.Item
-import com.br.matchmovies.model.ListMovies
-import com.br.matchmovies.model.Movie
-import com.br.matchmovies.model.MovieDetailsList
+import com.br.matchmovies.model.modelDetailsList.Item
+import com.br.matchmovies.model.modelDetailsList.MovieDetailsList
 
 class HomeMovieAdapter(private val listMoviesList: List<MovieDetailsList>, val callback: (Item) -> Unit) :
         RecyclerView.Adapter<HomeMovieAdapter.MatchViewHolder>(){
