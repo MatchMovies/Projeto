@@ -9,6 +9,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+
     defaultConfig {
         applicationId "com.br.matchmovies"
         minSdkVersion 26
@@ -47,6 +48,9 @@ android {
         implementation 'com.google.gms:google-services:4.3.5'
         implementation platform('com.google.firebase:firebase-bom:27.1.0')
         implementation 'com.google.firebase:firebase-analytics-ktx'
+        implementation 'com.google.firebase:firebase-inappmessaging-display:19.0.3'
+        implementation 'com.google.firebase:firebase-auth:19.2.0'
+
 
         testImplementation 'junit:junit:4.+'
         androidTestImplementation 'androidx.test.ext:junit:1.1.2'

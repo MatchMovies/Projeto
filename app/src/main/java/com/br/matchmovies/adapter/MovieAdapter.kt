@@ -1,18 +1,22 @@
 package com.br.matchmovies.adapter
 
+<<<<<<< HEAD
 import android.content.Intent
 import android.graphics.Movie
+=======
+
+>>>>>>> 65169d77d7b3abc13921252e447f24d61d490d1d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
-import com.br.matchmovies.model.Movie
-import com.br.matchmovies.view.MovieDetailsActivity
-import java.io.Serializable
+import com.br.matchmovies.model.modelDetailsList.Item
+import com.br.matchmovies.repository.SingletonConfiguration
+import com.squareup.picasso.Picasso
 
-class MovieAdapter(private val movieList: MutableList<Movie>, val callback: (Movie) -> Unit) :
+class MovieAdapter(private val movieList: List<Item>, val callback: (Item) -> Unit) :
         RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieAdapter.MovieViewHolder {
@@ -24,21 +28,19 @@ class MovieAdapter(private val movieList: MutableList<Movie>, val callback: (Mov
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
 
-        val image = holder.imageview
-        image.setImageResource(movieList[position].imageMovie)
+        val movie = movieList[position]
 
+        val configuration = SingletonConfiguration.config
+        val imageUrl = "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(3)}${movie.poster_path}"
+
+        Picasso.get().load(imageUrl).into(holder.imageview)
 
         holder.itemView.setOnClickListener {
-
-        callback(movieList[position])
-//           val intent = Intent(it.context, MovieDetailsActivity::class.java)
-//            intent.putExtra("movie", movieList[position] as Serializable)
-//             it.context.startActivity(intent)
+            callback(movie)
         }
     }
 
     inner class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
         val imageview: ImageView by lazy { view.findViewById<ImageView>(R.id.iv_movie_poster) }
     }
 
