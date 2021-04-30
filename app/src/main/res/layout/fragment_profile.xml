@@ -130,7 +130,7 @@
                     android:id="@+id/constraintViewMoreInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imageView_profile"

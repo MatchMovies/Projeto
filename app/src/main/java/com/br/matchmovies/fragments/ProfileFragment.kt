@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 
 
 import com.br.matchmovies.R
-import com.br.matchmovies.model.Movie
 import com.br.matchmovies.view.CadastroActivity
 import com.br.matchmovies.view.MovieDetailsActivity
 import java.io.Serializable
