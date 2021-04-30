@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "369895917523",
+    "project_id": "matchmoviesoficial-a1298",
+    "storage_bucket": "matchmoviesoficial-a1298.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369895917523:android:cfd804d9cd12da51381126",
+        "android_client_info": {
+          "package_name": "com.br.matchmovies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369895917523-gmkjf03pts96bn4qfb6unkaia29gcl4g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.br.matchmovies",
+            "certificate_hash": "d92331ea07a66596201825e3881aa877668468c6"
+          }
+        },
+        {
+          "client_id": "369895917523-de0hv6v41g0kevl9jgnkq2l33bvjk5oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEwTDLfB8yEOcPHHcB9mUdcCYsJ_Vn0hM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369895917523-de0hv6v41g0kevl9jgnkq2l33bvjk5oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
