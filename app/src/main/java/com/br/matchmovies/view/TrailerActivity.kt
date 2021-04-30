@@ -14,12 +14,13 @@ class TrailerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trailer)
 
+      val videoId = intent.extras?.getString("videoId")
+
       val youTubePlayerView = findViewById<YouTubePlayerView>(R.id.youtube_player_view)
        lifecycle.addObserver(youTubePlayerView)
 
         youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(youTubePlayer: YouTubePlayer) {
-                val videoId = intent.extras?.getString("videoId")
                 if (videoId != null) {
                     youTubePlayer.loadVideo(videoId, 0f)
                 }
