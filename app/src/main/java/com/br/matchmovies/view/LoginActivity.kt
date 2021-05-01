@@ -29,7 +29,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         val btnCadastro = findViewById<TextView>(R.id.btcadastrar)
         btnCadastro.setOnClickListener{
           startActivity(Intent(this, CadastroActivity::class.java))
