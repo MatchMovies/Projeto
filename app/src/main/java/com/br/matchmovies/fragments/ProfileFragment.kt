@@ -50,9 +50,21 @@ class ProfileFragment : Fragment() {
         val viewFragmentGc = inflater.inflate(R.layout.fragment_profile, container, false)
         val viewFragmentContato = inflater.inflate(R.layout.fragment_profile, container, false)
         val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
+        //val btnBack = view.findViewById<View>(R.id.btn_voltar) as Button
+        val btnEditProfile = view.findViewById<View>(R.id.btn_editarPerfil) as Button
+        val btnSair = view.findViewById<View>(R.id.ib_exit) as ImageButton
+
+   /*    btnBack.setOnClickListener {
+            val transition = requireActivity().supportFragmentManager.beginTransaction()
+            transition.replace(R.id.fl_wrapper, HomeFragment())
+            transition.addToBackStack(null)
+            transition.commit()
+        }*/
+
 
         val btnEditProfile = view.findViewById<View>(R.id.btn_editarPerfil) as Button
         val btnSair = view.findViewById<View>(R.id.ib_exit) as ImageButton
+
 
 
         btnEditProfile.setOnClickListener {
