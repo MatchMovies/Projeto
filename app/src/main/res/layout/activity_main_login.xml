@@ -104,18 +104,38 @@
         android:gravity="center|top"
         android:text="Esqueci a senha"
         android:layout_marginTop="17dp"/>
-
-    <TextView
-        android:id="@+id/btcadastrar"
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/esqueceu_senha"
-        android:textStyle="bold"
-        android:layout_marginTop="30dp"/>
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#A1000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btcadastrar"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="@color/CorFundo"
+            android:text="@string/esqueceu_senha"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/facebooklog"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_facebook"
@@ -127,10 +147,13 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="100dp"
+        android:onClick="sigIn"
         android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="-65dp"
         app:srcCompat="@drawable/ic_google"
         tools:ignore="VectorDrawableCompat"
         android:layout_gravity="center"/>
+
+
 </LinearLayout>

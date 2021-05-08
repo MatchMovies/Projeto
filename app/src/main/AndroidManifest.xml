@@ -21,8 +21,6 @@
                 "screenSize|smallestScreenSize|screenLayout|orientation"
             android:theme="@style/Theme.AppCompat.Translucent" /> <!-- <activity android:name=".view.MovieDetailsActivity"></activity> -->
         <activity android:name=".view.MovieDetailsActivity" />
-        <activity android:name=".view.HomeMovieActivity"
-            tools:ignore="MissingClass" />
         <activity android:name=".view.ForgotPasswordActivity" /> <!-- <activity android:name=".ActivityContract" /> -->
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.HomeActivity"/>
@@ -36,5 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
     </application>
 </manifest>
