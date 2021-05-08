@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "369895917523",
+    "firebase_url": "https://matchmoviesoficial-a1298-default-rtdb.firebaseio.com",
+    "project_id": "matchmoviesoficial-a1298",
+    "storage_bucket": "matchmoviesoficial-a1298.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369895917523:android:cfd804d9cd12da51381126",
+        "android_client_info": {
+          "package_name": "com.br.matchmovies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369895917523-21lo8pu0sm8tm14ul6togvp83g6o0id1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.br.matchmovies",
+            "certificate_hash": "a3f02df54cf6f2b7f13e9bab6af085c94bb76d67"
+          }
+        },
+        {
+          "client_id": "369895917523-3oi1rqj78lcu9v5qgm8rdj1ktckj4atv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.br.matchmovies",
+            "certificate_hash": "1b946151989e229b34271d5b629cd8a139992610"
+          }
+        },
+        {
+          "client_id": "369895917523-gmkjf03pts96bn4qfb6unkaia29gcl4g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.br.matchmovies",
+            "certificate_hash": "d92331ea07a66596201825e3881aa877668468c6"
+          }
+        },
+        {
+
+          "client_id": "369895917523-of411je8htmvu46sc9kacrlps662d8pg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.br.matchmovies",
+            "certificate_hash": "9a8c22cb0029eab41bf2257956d6ce6278536c02"
+          }
+        },
+        {
+          "client_id": "369895917523-de0hv6v41g0kevl9jgnkq2l33bvjk5oo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEwTDLfB8yEOcPHHcB9mUdcCYsJ_Vn0hM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369895917523-de0hv6v41g0kevl9jgnkq2l33bvjk5oo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
