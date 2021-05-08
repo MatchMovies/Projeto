@@ -18,10 +18,7 @@ import java.io.Serializable
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
 import com.br.matchmovies.adapter.HomeMovieAdapter
-<<<<<<< HEAD
-=======
 import com.br.matchmovies.model.modelDetailsList.Item
->>>>>>> 65169d77d7b3abc13921252e447f24d61d490d1d
 import com.br.matchmovies.view.MovieDetailsActivity
 import com.br.matchmovies.viewmodel.MoviesViewModel
 
