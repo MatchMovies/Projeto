@@ -35,9 +35,10 @@
 
         <ProgressBar
             android:id="@+id/progressBar_list_movie"
-            style="?android:attr/progressBarStyle"
+            style="?android:attr/secondaryProgress"
             android:layout_width="113dp"
             android:layout_height="104dp"
+            android:indeterminateTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/rv_list_of_movie_list"

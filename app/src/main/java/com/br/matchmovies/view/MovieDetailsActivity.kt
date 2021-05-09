@@ -4,6 +4,7 @@ package com.br.matchmovies.view
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.*
@@ -14,7 +15,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
 import com.br.matchmovies.model.modelDetailsList.Item
 import com.br.matchmovies.repository.SingletonConfiguration
-import com.br.matchmovies.repository.SingletonGenreList
 import com.br.matchmovies.viewmodel.MovieDetailsViewModel
 import com.squareup.picasso.Picasso
 
@@ -39,9 +39,12 @@ class MovieDetailsActivity : AppCompatActivity() {
     private val textProvider by lazy { findViewById<TextView>(R.id.tv_provider) }
     private val layoutProvider by lazy { findViewById<LinearLayout>(R.id.layout_provider) }
     lateinit var videoId: String
+    lateinit var movie: Item
     private val configuration = SingletonConfiguration.config
 
-    private val viewModel by lazy { ViewModelProviders.of(this).get(MovieDetailsViewModel::class.java)}
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(MovieDetailsViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,14 +54,13 @@ class MovieDetailsActivity : AppCompatActivity() {
         showErrorMessage()
 
         val info = intent.extras
-        val movie = info?.getSerializable("movie") as Item
+        movie = info?.getSerializable("movie") as Item
 
         viewModel.configMovieID(movie.id)
 
-        initViews(movie)
+        initViews()
         showButtonTrailer()
         showWatchProviders()
-
         configureClicks()
 
     }
@@ -80,7 +82,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun showButtonTrailer() {
 
         viewModel.trailerLiveData.observe(this) { idTrailer ->
-            if(idTrailer.isNotEmpty()){
+            if (idTrailer.isNotEmpty()) {
                 btnTrailer.visibility = VISIBLE
                 videoId = idTrailer
             }
@@ -104,63 +106,49 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
 
         btnShare.setOnClickListener {
-            shareText(title.text.toString())
+            shareText("Já assistiu a ${movie.title}? https://www.themoviedb.org/movie/${movie.id}")
         }
     }
 
     private fun showDialogUnMatch() {
-       AlertDialog.Builder(this, R.style.DialogTheme)
-                .setTitle("Tem certeza?")
-                .setMessage("Ao desfazer o match ${title.text} sairá da sua lista de filmes. Deseja continuar?")
-                .setPositiveButton("Sim, tenho certeza") { _, _ ->
-                    onBackPressed()
-                    Toast.makeText(this, "Match com ${title.text} desfeito!", Toast.LENGTH_LONG).show()
-                }.setNegativeButton("Cancelar") { dialog, _ ->
-                    dialog.dismiss()
-                }.show()
-
+        AlertDialog.Builder(this, R.style.DialogTheme)
+            .setTitle("Tem certeza?")
+            .setMessage("Ao desfazer o match ${title.text} sairá da sua lista de filmes. Deseja continuar?")
+            .setPositiveButton("Sim, tenho certeza") { _, _ ->
+                onBackPressed()
+                Toast.makeText(this, "Match com ${title.text} desfeito!", Toast.LENGTH_LONG).show()
+            }.setNegativeButton("Cancelar") { dialog, _ ->
+                dialog.dismiss()
+            }.show()
     }
 
     private fun showDialogRate() {
-        val popDialog = AlertDialog.Builder(this, R.style.DialogTheme)
-        val linearLayout = LinearLayout(this)
-        val rating = RatingBar(this, null, android.R.attr.ratingBarStyleIndicator)
+        val rateLayoutDialog: View = layoutInflater.inflate(R.layout.rate_dialog, null)
+        val rating = rateLayoutDialog.findViewById<RatingBar>(R.id.rating_dialog)
+
         var rateUser = 0.0
 
-        val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-
-        rating.layoutParams = lp
-        rating.scaleX = 1F
-        rating.scaleY = 1F
-        rating.max = 10
-        rating.setIsIndicator(false)
-        rating.numStars = 10
-        rating.stepSize = 0.5F
-        linearLayout.addView(rating)
-
-        popDialog.setTitle("Sua avaliação: ")
-        popDialog.setView(linearLayout)
-
-
         rating.onRatingBarChangeListener = OnRatingBarChangeListener { _, v, _ ->
-           rateUser = v.toDouble()
+            rateUser = v.toDouble()
         }
 
-        popDialog.
-        setPositiveButton(android.R.string.ok) { dialog, _ ->
-            if (rateUser != 0.0){
+        val builder = AlertDialog.Builder(this, R.style.DialogTheme)
+        builder.setTitle("Sua Avaliação: ")
+        builder.setView(rateLayoutDialog)
+        builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
+            if (rateUser != 0.0) {
                 viewModel.configRateUser(rateUser)
-                Toast.makeText(this, "Sua avaliação foi enviada com sucesso!" , Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Sua avaliação foi enviada com sucesso!", Toast.LENGTH_LONG)
+                    .show()
             }
-            dialog.dismiss() }
-        .setNegativeButton("Cancelar") { dialog, _ -> dialog.cancel() }
-
-        popDialog.create()
-        popDialog.show()
-
+            dialog.dismiss()
+        }
+        builder.setNegativeButton("Cancelar") { dialog, _ -> dialog.cancel() }
+        builder.create()
+        builder.show()
     }
 
-    private fun shareText(text: String){
+    private fun shareText(text: String) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, text)
@@ -171,16 +159,21 @@ class MovieDetailsActivity : AppCompatActivity() {
         startActivity(shareIntent)
     }
 
-    private fun initViews(movie: Item) {
+    private fun initViews() {
 
         setMoviePoster(movie.poster_path)
         setGenre(movie.genre_ids)
         setMovieCredits()
 
+        if (movie.overview.isNotBlank()) {
+            textOverview.text = movie.overview
+        } else {
+            textOverview.text = "Sinopse indisponível."
+        }
+
         title.text = movie.title
         ratingBar.rating = movie.vote_average.toFloat()
         voteAverage.text = movie.vote_average.toString()
-        textOverview.text = movie.overview
         year.text = movie.release_date.subSequence(0, 4)
 
     }
@@ -208,10 +201,10 @@ class MovieDetailsActivity : AppCompatActivity() {
     private fun setGenre(ids: List<Int>) {
         val genres = mutableListOf<String>()
 
-        viewModel.genresLiveData.observe(this){genreList ->
+        viewModel.genresLiveData.observe(this) { genreList ->
             genreList.genres.forEach {
-                ids.forEach{idGenreMovie ->
-                    if (it.id == idGenreMovie){
+                ids.forEach { idGenreMovie ->
+                    if (it.id == idGenreMovie) {
                         genres.add(it.name)
                     }
                 }
@@ -221,27 +214,29 @@ class MovieDetailsActivity : AppCompatActivity() {
     }
 
     private fun setMoviePoster(posterPath: String) {
-        val imageUrl = "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(5)}${posterPath}"
+        val imageUrl = "${configuration?.images?.base_url}${
+            configuration?.images?.poster_sizes?.get(5)}${posterPath}"
         Picasso.get().load(imageUrl).into(imageMovie)
     }
 
     private fun showWatchProviders() {
 
         viewModel.watchProvidersLiveData.observe(this) { movieWatchProviders ->
-            try{
-                for(it in movieWatchProviders.results.BR.flatrate){
-                    val imageUrlProvider = "${configuration?.images?.base_url}${configuration?.images?.logo_sizes?.get(1)}${it.logo_path}"
+            try {
+                for (it in movieWatchProviders.results.BR.flatrate) {
+                    val imageUrlProvider = "${configuration?.images?.base_url}${
+                        configuration?.images?.logo_sizes?.get(1)}${it.logo_path}"
 
                     val newImageView = ImageView(this)
 
                     val params = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
+                        LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT
                     )
                     params.setMargins(8, 8, 8, 8)
                     newImageView.layoutParams = params
-                    layoutProvider.addView(newImageView)
 
+                    layoutProvider.addView(newImageView)
                     Picasso.get().load(imageUrlProvider).into(newImageView)
                 }
 
@@ -253,13 +248,13 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun builder(list: List<String>) : StringBuilder {
+    private fun builder(list: List<String>): StringBuilder {
         val builder = StringBuilder()
         for (item in list) {
             builder.append(item)
-                if(list.last() != item){
-                    builder.append(", ")
-                 }
+            if (list.last() != item) {
+                builder.append(", ")
+            }
         }
         return builder
     }
