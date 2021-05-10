@@ -1,11 +1,6 @@
 package com.br.matchmovies.adapter
 
-<<<<<<< HEAD
-import android.content.Intent
-import android.graphics.Movie
-=======
 
->>>>>>> 65169d77d7b3abc13921252e447f24d61d490d1d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
