@@ -23,6 +23,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
     private val imageMovie by lazy { findViewById<ImageView>(R.id.img_movie) }
+    private val imageBackgroung by lazy { findViewById<ImageView>(R.id.img_background) }
     private val title by lazy { findViewById<TextView>(R.id.tv_title) }
     private val ratingBar by lazy { findViewById<RatingBar>(R.id.rating) }
     private val voteAverage by lazy { findViewById<TextView>(R.id.tv_vote_average) }
@@ -186,7 +187,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                     listDirector.add(it.name)
                 }
             }
-            director.append(builder(listDirector))
+            director.text = builder(listDirector).toString()
 
             val listCast = mutableListOf<String>()
             for (it in movieCredits.cast) {
@@ -194,7 +195,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                     listCast.add(it.original_name)
                 }
             }
-            cast.append(builder(listCast))
+            cast.text = builder(listCast).toString()
         }
     }
 
@@ -209,7 +210,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                     }
                 }
             }
-            genre.append(builder(genres))
+            genre.text = builder(genres).toString()
         }
     }
 
@@ -217,6 +218,11 @@ class MovieDetailsActivity : AppCompatActivity() {
         val imageUrl = "${configuration?.images?.base_url}${
             configuration?.images?.poster_sizes?.get(5)}${posterPath}"
         Picasso.get().load(imageUrl).into(imageMovie)
+
+        val imageUrl2 = "${configuration?.images?.base_url}${
+            configuration?.images?.backdrop_sizes?.get(0)}${movie.backdrop_path}"
+
+        Picasso.get().load(imageUrl2).into(imageBackgroung)
     }
 
     private fun showWatchProviders() {
@@ -235,6 +241,7 @@ class MovieDetailsActivity : AppCompatActivity() {
                     )
                     params.setMargins(8, 8, 8, 8)
                     newImageView.layoutParams = params
+                    newImageView.contentDescription = it.provider_name
 
                     layoutProvider.addView(newImageView)
                     Picasso.get().load(imageUrlProvider).into(newImageView)

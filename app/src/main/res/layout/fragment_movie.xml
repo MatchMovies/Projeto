@@ -22,7 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list_of_movie_list"
             android:layout_width="match_parent"
