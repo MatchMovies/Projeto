@@ -12,4 +12,8 @@
     <color name="CorFundo">#88006A</color>
     <color name="CorTexto">#FFFFFF</color>
     <color name="CorTitulo">@color/black</color><!-- Cor que digita dentro da caixa de entrar. -->
+    <color name="yellow">#FF9801</color><!-- Cor que digita seu e-mail -->
+    <color name="red">#FF0000</color><!-- Cor erro do cadastro -->
+    <color name="grey">#878686</color><!-- texto cadastro -->
+
 </resources>

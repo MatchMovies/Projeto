@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.br.matchmovies">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,15 +9,18 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchMovies">
         <activity
             android:name=".view.TrailerActivity"
             android:hardwareAccelerated="true"
+            android:supportsPictureInPicture="true"
+            android:configChanges=
+                "screenSize|smallestScreenSize|screenLayout|orientation"
             android:theme="@style/Theme.AppCompat.Translucent" /> <!-- <activity android:name=".view.MovieDetailsActivity"></activity> -->
         <activity android:name=".view.MovieDetailsActivity" />
-        <activity android:name=".view.HomeMovieActivity" />
         <activity android:name=".view.ForgotPasswordActivity" /> <!-- <activity android:name=".ActivityContract" /> -->
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.HomeActivity"/>
@@ -30,5 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
     </application>
 </manifest>
