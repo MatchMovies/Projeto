@@ -9,10 +9,19 @@ import com.br.matchmovies.model.modelMovieDetails.MovieDetails
 import com.br.matchmovies.model.modelProvider.MovieWatchProviders
 import com.br.matchmovies.model.modelRateMovie.RateMovieRequest
 import com.br.matchmovies.model.modelRateMovie.RateMovieResponse
+import com.br.matchmovies.model.modelSimilar.SimilarMovies
 import com.br.matchmovies.model.modelVideoMovie.Trailer
 import retrofit2.http.*
 
 interface EndPointApi {
+
+
+    @GET("movie/{movie_id}/similar")
+    suspend fun getResponseMovieSimilar(
+       @Path("movie_id") movieId: String?,
+       @Query("api_key") apiKey: String?,
+       @Query("language") language: String?
+    ) : SimilarMovies
 
     @GET("configuration")
     suspend fun getResponseMovieConfiguration(
