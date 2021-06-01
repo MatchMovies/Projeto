@@ -24,9 +24,8 @@ class MatchFragment : Fragment() {
 
     private val returButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_return) }
     private val exitButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_close) }
-    //private val imageMovie by lazy { view?.findViewById<ImageView>(R.id.ic_match_movie) }
-    private val listApi = mutableListOf<Result>()
-    lateinit var imageUrl: String
+    private val listMovie = mutableListOf<Result>()
+
     private val configuration = SingletonConfiguration.config
     var contador = 0
 
@@ -57,18 +56,18 @@ class MatchFragment : Fragment() {
         viewModel?.getSimilarMovies()
         viewModel?.moviesLiveData?.observe(viewLifecycleOwner, Observer { t ->
              t.results.let {
-                 listApi.addAll(it)
+                 listMovie.addAll(it)
              }
         })
         val heartMatch = view.findViewById<View>(R.id.button_ic_match_check) as Button
         heartMatch.setOnClickListener{
             contador += 1
-            teste(listApi, contador)
+            poster(listMovie, contador)
         }
 
     }
 
-    private fun teste(lista : List<Result>, contador : Int){
+    private fun poster(lista : List<Result>, contador : Int){
 
             setMoviePoster(lista[contador].poster_path.toString())
 
