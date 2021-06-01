@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MatchFragment">
+    tools:context=".fragments.SeriesFragment">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
             android:foreground="@drawable/ic_logo_horizontal"
             android:foregroundGravity="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +43,7 @@
 
 
         <Button
-            android:id="@+id/button_ic_match_return"
+            android:id="@+id/button_series_ic_match_return"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -55,25 +55,13 @@
             app:layout_constraintTop_toBottomOf="@+id/ic_match_movie" />
 
         <Button
-            android:id="@+id/button_ic_match_check"
+            android:id="@+id/button_series_ic_match_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="40dp"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_match_check"
-            app:backgroundTint="#00FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ic_match_movie" />
-
-        <Button
-            android:id="@+id/button_ic_match_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="132dp"
-            android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_match_close"
             app:backgroundTint="#00FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ic_match_movie" />
@@ -91,6 +79,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </FrameLayout>

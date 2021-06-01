@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.br.matchmovies.model.modelDetailsList.MovieDetailsList
 import com.br.matchmovies.model.modelSimilar.SimilarMovies
 import com.br.matchmovies.repository.RepositoryApi
-import com.br.matchmovies.repository.SingletonConfiguration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,37 +22,24 @@ class MatchMoviesViewModel : ViewModel() {
     private val resultTest = mutableListOf<MovieDetailsList>()
 
     init {
-        getConfiguration()
+        getSimilarMovies()
     }
 
-    private fun getConfiguration() = CoroutineScope(Dispatchers.IO).launch {
+     fun getSimilarMovies() = CoroutineScope(Dispatchers.IO).launch {
         loading.postValue(true)
         try {
-            repository.getMovieConfiguration().let { configuration ->
-                SingletonConfiguration.setConfiguration(configuration)
-                getMovieSimilarMovies()
-            }
-        }catch (error: Throwable){
-            loading.postValue(false)
-            handleError(error)
-        }
-    }
-
-        private fun getMovieSimilarMovies()= CoroutineScope(Dispatchers.IO).launch {
-        loading.postValue(true)
-        try {
-                repository.getSimilarMovieDetails("203217").let { movieSimilarResponse ->
+            repository.getSimilarMovieDetails("203217").let { movieSimilarResponse ->
                 moviesLiveData.postValue(movieSimilarResponse)
+              }
 
-            }
+            }catch (error: Throwable){
 
-            loading.postValue(false)
-
-        }catch (error: Throwable){
-            loading.postValue(false)
             handleError(error)
+        }finally {
+            loading.postValue(false)
         }
     }
+
 
     private fun handleError(error: Throwable) {
         when(error){
