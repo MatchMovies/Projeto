@@ -9,6 +9,8 @@ import com.br.matchmovies.model.modelMovieDetails.MovieDetails
 import com.br.matchmovies.model.modelProvider.MovieWatchProviders
 import com.br.matchmovies.model.modelRateMovie.RateMovieRequest
 import com.br.matchmovies.model.modelRateMovie.RateMovieResponse
+import com.br.matchmovies.model.modelSimilar.SimilarMovies
+import com.br.matchmovies.model.modelSimilarTvSeries.SimilarTvSeries
 import com.br.matchmovies.model.modelVideoMovie.Trailer
 import com.br.matchmovies.network.EndPointApi
 import com.br.matchmovies.network.RetrofitInit
@@ -22,6 +24,15 @@ class RepositoryApi {
     private val serviceMovies = RetrofitInit(url).create(service)
 
     suspend fun getMovieConfiguration(): MovieConfiguration = serviceMovies.getResponseMovieConfiguration(API_KEY)
+
+
+    suspend fun getSimilarTvSeries(seriesId : String) : SimilarTvSeries {
+        return serviceMovies.getResponseTvSeriesSimilar(seriesId, API_KEY, "pt-BR")
+    }
+
+    suspend fun getSimilarMovieDetails(movieId: String): SimilarMovies {
+        return serviceMovies.getResponseMovieSimilar(movieId, API_KEY, "pt-BR")
+    }
 
     suspend fun getMovieDetails(movieId: String): MovieDetails {
         return serviceMovies.getResponseMovieDetails(movieId, API_KEY, "pt-BR")
