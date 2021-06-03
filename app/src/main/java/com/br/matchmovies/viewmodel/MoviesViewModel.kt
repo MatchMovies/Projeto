@@ -3,6 +3,7 @@ package com.br.matchmovies.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.br.matchmovies.model.modelDetailsList.MovieDetailsList
+import com.br.matchmovies.model.modelTESTE.ListTest
 import com.br.matchmovies.repository.RepositoryApi
 import com.br.matchmovies.repository.SingletonConfiguration
 import kotlinx.coroutines.CoroutineScope
@@ -14,13 +15,14 @@ import java.net.UnknownHostException
 class MoviesViewModel : ViewModel() {
 
 
-    val moviesLiveData = MutableLiveData<List<MovieDetailsList>>()
+    val moviesLiveData = MutableLiveData<List<ListTest>>()
     val loading = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<String>()
     private val repository = RepositoryApi()
 
-    private val listTest = listOf("50941077760ee35e1500000c", "51dcfe13760ee376102ae388", "5399f3e50e0a260c0400030c")
-    private val resultTest = mutableListOf<MovieDetailsList>()
+   // private val listTest = listOf("50941077760ee35e1500000c", "51dcfe13760ee376102ae388", "5399f3e50e0a260c0400030c")
+   private val listTest = listOf("7097251")
+    private val resultTest = mutableListOf<ListTest>()
 
     init {
         getConfiguration()
