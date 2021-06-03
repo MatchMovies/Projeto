@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
     android:layout_height="fill_parent" >
 
 <FrameLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
@@ -130,7 +130,8 @@
                     android:id="@+id/constraintViewMoreInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="visible">
+                    android:visibility="visible"
+                    tools:visibility="visible">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/imageView_profile"
@@ -246,8 +247,8 @@
 
                     <Button
                         android:id="@+id/btn_editarPerfil"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="154dp"
+                        android:layout_height="38dp"
                         android:layout_marginTop="16dp"
                         android:gravity="start"
                         android:text="Editar Perfil"
@@ -291,14 +292,13 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintViewCard2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/tv_meusMatchs"
                         android:layout_width="358dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="16dp"
                         android:text="Meus Match's"

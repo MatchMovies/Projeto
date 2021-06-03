@@ -12,43 +12,43 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
-import com.br.matchmovies.model.modelDatabase.FavoriteMovies
+import com.br.matchmovies.model.modelDatabase.FavoriteSeries
 import com.br.matchmovies.model.modelDatabase.Subject
 import com.br.matchmovies.model.modelDatabase.UserMovies
-import com.br.matchmovies.model.modelSimilar.Result
+import com.br.matchmovies.model.modelDatabase.UserSeries
+import com.br.matchmovies.model.modelSimilarTvSeries.Result
 import com.br.matchmovies.repository.SingletonConfiguration
-import com.br.matchmovies.viewmodel.MatchMoviesViewModel
+
+import com.br.matchmovies.viewmodel.SeriesViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
-class MatchFragment : Fragment() {
 
-    private val returButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_return) }
-    private val exitButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_close) }
+class SeriesFragment : Fragment() {
+
     private val listMovie = mutableListOf<Result>()
-    private var firestoreDb = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
-    private val matchMovieList = mutableListOf<Result>()
+    private var firestoreDb = Firebase.firestore
+    private val matchSeriesList = mutableListOf<Result>()
 
     private val configuration = SingletonConfiguration.config
     var contador = 0
 
-    private val viewModel by lazy {
-      activity?.let {
-          ViewModelProviders.of(it).get(MatchMoviesViewModel::class.java)
-      }
-    }
+
+    private val viewModel by lazy {  activity?.let { ViewModelProviders.of(it).get(SeriesViewModel::class.java)}}
+
     lateinit var progressBar: ProgressBar
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_match, container, false)
-
+        return inflater.inflate(R.layout.fragment_series, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,28 +57,27 @@ class MatchFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         showProgressBar(view)
         showErrorMessage()
-       // configMovie()
+        // configMovie()
 
 
-        viewModel?.getSimilarMovies()
-        viewModel?.moviesLiveData?.observe(viewLifecycleOwner, Observer { t ->
-             t.results.let {
-                 listMovie.addAll(it)
-             }
+        viewModel?.getSimilarTvSeries()
+        viewModel?.seriesLiveData?.observe(viewLifecycleOwner, Observer { t ->
+            t.results.let {
+                listMovie.addAll(it)
+            }
         })
-        val heartMatch = view.findViewById<View>(R.id.button_ic_match_check) as Button
+        val heartMatch = view.findViewById<View>(R.id.button_series_ic_match_check) as Button
         heartMatch.setOnClickListener{
             contador += 1
             poster(listMovie, contador)
-            matchMovieList.add(listMovie[contador])
+            matchSeriesList.add(listMovie[contador])
             addUser()
         }
 
     }
-
     private fun poster(lista : List<Result>, contador : Int){
 
-            setMoviePoster(lista[contador].poster_path.toString())
+        setMoviePoster(lista[contador].poster_path.toString())
 
     }
 
@@ -111,11 +110,11 @@ class MatchFragment : Fragment() {
     private fun addUser() {
         firebaseAuth.currentUser?.let { user ->
             val subject = Subject("Firebase Database")
-            val userDb = UserMovies(
+            val userDb = UserSeries(
                 user.email ?: "",
                 user.displayName,
                 subject,
-                FavoriteMovies(matchMovieList)
+                FavoriteSeries(matchSeriesList)
             )
 
             firestoreDb.collection("users")
@@ -128,6 +127,7 @@ class MatchFragment : Fragment() {
                 }
         }
     }
+
+
+
 }
-
-
