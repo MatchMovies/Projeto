@@ -23,68 +23,83 @@ class RepositoryApi {
 
     private val serviceMovies = RetrofitInit(url).create(service)
 
-    suspend fun getMovieConfiguration(): MovieConfiguration = serviceMovies.getResponseMovieConfiguration(API_KEY)
+    suspend fun getMovieConfiguration(): MovieConfiguration =
+        serviceMovies.getResponseMovieConfiguration(API_KEY)
 
 
     suspend fun getGuestSession(): GuestSession {
         return serviceMovies.getResponseGuestSession(API_KEY)
-
-
-    suspend fun getSimilarTvSeries(seriesId : String) : SimilarTvSeries {
-        return serviceMovies.getResponseTvSeriesSimilar(seriesId, API_KEY, "pt-BR")
     }
 
-    suspend fun getSimilarMovieDetails(movieId: String): SimilarMovies {
-        return serviceMovies.getResponseMovieSimilar(movieId, API_KEY, "pt-BR")
-    }
 
-    suspend fun getMovieDetails(movieId: String): MovieDetails {
-        return serviceMovies.getResponseMovieDetails(movieId, API_KEY, "pt-BR")
+        suspend fun getSimilarTvSeries(seriesId: String): SimilarTvSeries {
+            return serviceMovies.getResponseTvSeriesSimilar(seriesId, API_KEY, "pt-BR")
+        }
 
-    }
+        suspend fun getSimilarMovieDetails(movieId: String): SimilarMovies {
+            return serviceMovies.getResponseMovieSimilar(movieId, API_KEY, "pt-BR")
+        }
 
-    suspend fun getMovieTrailer(movieId: Int): Trailer {
-        return serviceMovies.getResponseMovieTrailer(movieId, API_KEY, "pt-BR")
-    }
+        suspend fun getMovieTrailer(movieId: Int): Trailer {
+            return serviceMovies.getResponseMovieTrailer(movieId, API_KEY, "pt-BR")
+        }
 
-    suspend fun getMovieWatchProviders(movieId: Int): MovieWatchProviders {
-        return serviceMovies.getResponseMovieWatchProviders(movieId, API_KEY)
-    }
+        suspend fun getMovieWatchProviders(movieId: Int): MovieWatchProviders {
+            return serviceMovies.getResponseMovieWatchProviders(movieId, API_KEY)
+        }
 
-    suspend fun getMovieCredits(movieId: Int): MovieCredits {
-        return serviceMovies.getResponseMovieCredits(movieId, API_KEY)
-    }
+        suspend fun getMovieCredits(movieId: Int): MovieCredits {
+            return serviceMovies.getResponseMovieCredits(movieId, API_KEY)
+        }
 
-    suspend fun postRateMovie(movieId: Int, guestSessionId: String, rateMovieRequest: RateMovieRequest): RateMovieResponse {
-        return serviceMovies.postResponseRateMovie(movieId,API_KEY, guestSessionId, rateMovieRequest)
-    }
+        suspend fun postRateMovie(
+            movieId: Int,
+            guestSessionId: String,
+            rateMovieRequest: RateMovieRequest
+        ): RateMovieResponse {
+            return serviceMovies.postResponseRateMovie(
+                movieId,
+                API_KEY,
+                guestSessionId,
+                rateMovieRequest
+            )
+        }
 
-    suspend fun getGenreList(): GenreList {
-        return serviceMovies.getResponseGenreMovieList(API_KEY, "pt-BR")
-    }
+        suspend fun getGenreList(): GenreList {
+            return serviceMovies.getResponseGenreMovieList(API_KEY, "pt-BR")
+        }
 
-    suspend fun getTvShowTrailer(tvId: Int): Trailer {
-        return serviceMovies.getResponseTvShowTrailer(tvId, API_KEY, "pt-BR")
-    }
+        suspend fun getTvShowTrailer(tvId: Int): Trailer {
+            return serviceMovies.getResponseTvShowTrailer(tvId, API_KEY, "pt-BR")
+        }
 
-    suspend fun getTVShowWatchProviders(tvId: Int): MovieWatchProviders {
-        return serviceMovies.getResponseTvShowWatchProviders(tvId, API_KEY)
-    }
+        suspend fun getTVShowWatchProviders(tvId: Int): MovieWatchProviders {
+            return serviceMovies.getResponseTvShowWatchProviders(tvId, API_KEY)
+        }
 
-    suspend fun getTVShowCredits(tvId: Int): MovieCredits {
-        return serviceMovies.getResponseTvShowCredits(tvId, API_KEY)
-    }
+        suspend fun getTVShowCredits(tvId: Int): MovieCredits {
+            return serviceMovies.getResponseTvShowCredits(tvId, API_KEY)
+        }
 
-    suspend fun postRateTVShow(tvID: Int, guestSessionId: String, rateMovieRequest: RateMovieRequest): RateMovieResponse {
-        return serviceMovies.postResponseRateTvShow(tvID,API_KEY, guestSessionId, rateMovieRequest)
-    }
+        suspend fun postRateTVShow(
+            tvID: Int,
+            guestSessionId: String,
+            rateMovieRequest: RateMovieRequest
+        ): RateMovieResponse {
+            return serviceMovies.postResponseRateTvShow(
+                tvID,
+                API_KEY,
+                guestSessionId,
+                rateMovieRequest
+            )
+        }
 
-    suspend fun getGenreTVShowList(): GenreList {
-        return serviceMovies.getResponseGenreTvList(API_KEY, "pt-BR")
-    }
+        suspend fun getGenreTVShowList(): GenreList {
+            return serviceMovies.getResponseGenreTvList(API_KEY, "pt-BR")
+        }
 
-    //-----------------------------------------------------------------------------//
-    suspend fun getMovieDetailsList(listId: String): ListTest {
-        return serviceMovies.getResponseMovieDetailsList(listId, API_KEY, "pt-BR")
+        //-----------------------------------------------------------------------------//
+        suspend fun getMovieDetailsList(listId: String): ListTest {
+            return serviceMovies.getResponseMovieDetailsList(listId, API_KEY, "pt-BR")
+        }
     }
-}
