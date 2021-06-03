@@ -14,11 +14,10 @@ import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
 import com.br.matchmovies.model.modelTESTE.Item
 import com.br.matchmovies.repository.SingletonConfiguration
-import com.br.matchmovies.viewmodel.MovieDetailsViewModel
+import com.br.matchmovies.viewmodel.TvShowDetailsViewModel
 import com.squareup.picasso.Picasso
 
-
-class MovieDetailsActivity : AppCompatActivity() {
+class TvShowDetailsActivity : AppCompatActivity() {
 
     private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
     private val imageMovie by lazy { findViewById<ImageView>(R.id.img_movie) }
@@ -39,24 +38,24 @@ class MovieDetailsActivity : AppCompatActivity() {
     private val textProvider by lazy { findViewById<TextView>(R.id.tv_provider) }
     private val layoutProvider by lazy { findViewById<LinearLayout>(R.id.layout_provider) }
     lateinit var videoId: String
-    lateinit var movie: Item
+    lateinit var tvShow: Item
     private val configuration = SingletonConfiguration.config
 
     private val viewModel by lazy {
-        ViewModelProviders.of(this).get(MovieDetailsViewModel::class.java)
+        ViewModelProviders.of(this).get(TvShowDetailsViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_details)
+        setContentView(R.layout.activity_tv_show_details)
 
         configToolbar()
         showErrorMessage()
 
         val info = intent.extras
-        movie = info?.getSerializable("movie") as Item
+        tvShow = info?.getSerializable("tvshow") as Item
 
-        viewModel.configMovieID(movie.id)
+        viewModel.configMovieID(tvShow.id)
 
         initViews()
         showButtonTrailer()
@@ -83,7 +82,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         viewModel.trailerLiveData.observe(this) { idTrailer ->
             if (idTrailer.isNotEmpty()) {
-                btnTrailer.visibility = VISIBLE
+                btnTrailer.visibility = View.VISIBLE
                 videoId = idTrailer
             }
         }
@@ -106,7 +105,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
 
         btnShare.setOnClickListener {
-            shareText("Já assistiu a ${movie.title}? https://www.themoviedb.org/movie/${movie.id}")
+            shareText("Já assistiu a ${tvShow.name}? https://www.themoviedb.org/movie/${tvShow.id}")
         }
     }
 
@@ -161,20 +160,20 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun initViews() {
 
-        setMoviePoster(movie.poster_path)
-        setGenre(movie.genre_ids)
+        setMoviePoster(tvShow.poster_path)
+        setGenre(tvShow.genre_ids)
         setMovieCredits()
 
-        if (movie.overview.isNotBlank()) {
-            textOverview.text = movie.overview
+        if (tvShow.overview.isNotBlank()) {
+            textOverview.text = tvShow.overview
         } else {
             textOverview.text = "Sinopse indisponível."
         }
 
-        ratingBar.rating = movie.vote_average.toFloat()
-        voteAverage.text = movie.vote_average.toString()
-        title.text = movie.title
-        year.text = movie.release_date.subSequence(0, 4)
+        title.text = tvShow.name
+        ratingBar.rating = tvShow.vote_average.toFloat()
+        voteAverage.text = tvShow.vote_average.toString()
+        year.text = tvShow.first_air_date.subSequence(0, 4)
 
     }
 
@@ -182,7 +181,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         val listDirector = mutableListOf<String>()
         viewModel.movieCreditsLiveData.observe(this) { movieCredits ->
             for (it in movieCredits.crew) {
-                if (it.job == "Director") {
+                if (it.job == "Executive Producer") {
                     listDirector.add(it.name)
                 }
             }
@@ -219,7 +218,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         Picasso.get().load(imageUrl).into(imageMovie)
 
         val imageUrl2 = "${configuration?.images?.base_url}${
-            configuration?.images?.backdrop_sizes?.get(0)}${movie.backdrop_path}"
+            configuration?.images?.backdrop_sizes?.get(0)}${tvShow.backdrop_path}"
 
         Picasso.get().load(imageUrl2).into(imageBackgroung)
     }
@@ -247,8 +246,8 @@ class MovieDetailsActivity : AppCompatActivity() {
                 }
 
             } catch (error: Throwable) {
-                layoutProvider.visibility = GONE
-                textProvider.visibility = GONE
+                layoutProvider.visibility = View.GONE
+                textProvider.visibility = View.GONE
             }
 
         }

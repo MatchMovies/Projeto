@@ -1,16 +1,18 @@
-package com.br.matchmovies.model.modelDetailsList
+package com.br.matchmovies.model.modelTESTE
 
-import com.br.matchmovies.adapter.TypeMatch
 import java.io.Serializable
-
 
 data class Item(
     val adult: Boolean,
     val backdrop_path: Any,
+    val first_air_date: String,
     val genre_ids: List<Int>,
     val id: Int,
     val media_type: String,
+    val name: String,
+    val origin_country: List<String>,
     val original_language: String,
+    val original_name: String,
     val original_title: String,
     val overview: String,
     val popularity: Double,
@@ -20,9 +22,4 @@ data class Item(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-) : Serializable, TypeMatch {
-
-    override fun getType(): Int {
-        return TypeMatch.movie
-    }
-}
+) : Serializable
