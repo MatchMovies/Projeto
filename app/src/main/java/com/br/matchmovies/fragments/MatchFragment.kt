@@ -1,7 +1,6 @@
 package com.br.matchmovies.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +12,15 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
-import com.br.matchmovies.model.modelProvider.Results
+import com.br.matchmovies.model.modelDatabase.FavoriteMovies
+import com.br.matchmovies.model.modelDatabase.Subject
+import com.br.matchmovies.model.modelDatabase.UserMovies
 import com.br.matchmovies.model.modelSimilar.Result
-import com.br.matchmovies.model.modelSimilar.SimilarMovies
 import com.br.matchmovies.repository.SingletonConfiguration
 import com.br.matchmovies.viewmodel.MatchMoviesViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 class MatchFragment : Fragment() {
@@ -25,6 +28,9 @@ class MatchFragment : Fragment() {
     private val returButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_return) }
     private val exitButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_close) }
     private val listMovie = mutableListOf<Result>()
+    private var firestoreDb = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
+    private val matchMovieList = mutableListOf<Result>()
 
     private val configuration = SingletonConfiguration.config
     var contador = 0
@@ -48,6 +54,7 @@ class MatchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        firebaseAuth = FirebaseAuth.getInstance()
         showProgressBar(view)
         showErrorMessage()
        // configMovie()
@@ -63,6 +70,8 @@ class MatchFragment : Fragment() {
         heartMatch.setOnClickListener{
             contador += 1
             poster(listMovie, contador)
+            matchMovieList.add(listMovie[contador])
+            addUser()
         }
 
     }
@@ -97,6 +106,27 @@ class MatchFragment : Fragment() {
         val imageMovie =  view?.findViewById<ImageView>(R.id.ic_match_movie)
         val imageUrl = "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(5)}${posterPath}"
         Picasso.get().load(imageUrl).into(imageMovie)
+    }
+
+    private fun addUser() {
+        firebaseAuth.currentUser?.let { user ->
+            val subject = Subject("Firebase Database")
+            val userDb = UserMovies(
+                user.email ?: "",
+                user.displayName,
+                subject,
+                FavoriteMovies(matchMovieList)
+            )
+
+            firestoreDb.collection("users")
+                .document(user.uid)
+                .set(userDb)
+                .addOnSuccessListener {
+                    it
+                }.addOnFailureListener {
+                    it
+                }
+        }
     }
 }
 
