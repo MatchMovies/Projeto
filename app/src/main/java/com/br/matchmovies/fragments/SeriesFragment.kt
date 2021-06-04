@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso
 
 class SeriesFragment : Fragment() {
 
-    private val listMovie = mutableListOf<Result>()
+    private val listSeries = mutableListOf<Result>()
     private lateinit var firebaseAuth: FirebaseAuth
     private var firestoreDb = Firebase.firestore
     private val matchSeriesList = mutableListOf<Result>()
@@ -54,6 +54,10 @@ class SeriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val heartMatch = view.findViewById<View>(R.id.button_series_ic_match_check) as Button
+        val returButton = view.findViewById<View>(R.id.button_series_ic_match_return) as Button
+        val exitButton = view.findViewById<View>(R.id.button_series_ic_close) as Button
+
         firebaseAuth = FirebaseAuth.getInstance()
         showProgressBar(view)
         showErrorMessage()
@@ -63,15 +67,36 @@ class SeriesFragment : Fragment() {
         viewModel?.getSimilarTvSeries()
         viewModel?.seriesLiveData?.observe(viewLifecycleOwner, Observer { t ->
             t.results.let {
-                listMovie.addAll(it)
+                listSeries.addAll(it)
+                setMoviePoster(listSeries[0].poster_path.toString())
+                returButton.isEnabled = true
             }
         })
-        val heartMatch = view.findViewById<View>(R.id.button_series_ic_match_check) as Button
+
         heartMatch.setOnClickListener{
             contador += 1
-            poster(listMovie, contador)
-            matchSeriesList.add(listMovie[contador])
+            poster(listSeries, contador)
+            if(!matchSeriesList.contains(listSeries[contador])){
+            matchSeriesList.add(listSeries[contador])
             addUser()
+            Toast.makeText(requireContext(), "Match realizado com sucesso", Toast.LENGTH_SHORT).show()
+            returButton.isEnabled = true
+        } else {
+                Toast.makeText(requireContext(), "Match já foi realizado", Toast.LENGTH_SHORT).show()
+          }
+        }
+
+        exitButton.setOnClickListener{
+            contador +=1
+            poster(listSeries, contador)
+            returButton.isEnabled = true
+        }
+
+        returButton.setOnClickListener {
+            if(listSeries[0] != listSeries[contador]){
+                poster(listSeries, contador)
+                contador -= 1
+            }
         }
 
     }
