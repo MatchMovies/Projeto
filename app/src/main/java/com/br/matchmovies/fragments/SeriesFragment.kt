@@ -14,11 +14,9 @@ import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
 import com.br.matchmovies.model.modelDatabase.FavoriteSeries
 import com.br.matchmovies.model.modelDatabase.Subject
-import com.br.matchmovies.model.modelDatabase.UserMovies
 import com.br.matchmovies.model.modelDatabase.UserSeries
 import com.br.matchmovies.model.modelSimilarTvSeries.Result
 import com.br.matchmovies.repository.SingletonConfiguration
-
 import com.br.matchmovies.viewmodel.SeriesViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
