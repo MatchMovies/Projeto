@@ -25,13 +25,10 @@ import com.squareup.picasso.Picasso
 
 class MatchFragment : Fragment() {
 
-    private val returButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_return) }
-    private val exitButton by lazy { view?.findViewById<ImageView>(R.id.button_ic_match_close) }
     private val listMovie = mutableListOf<Result>()
     private var firestoreDb = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
     private val matchMovieList = mutableListOf<Result>()
-
     private val configuration = SingletonConfiguration.config
     var contador = 0
 
@@ -54,6 +51,10 @@ class MatchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val heartMatch = view.findViewById<View>(R.id.button_ic_match_check) as Button
+        val returButton = view.findViewById<View>(R.id.button_ic_match_return) as Button
+        val exitButton = view.findViewById<View>(R.id.button_ic_match_close) as Button
+
         firebaseAuth = FirebaseAuth.getInstance()
         showProgressBar(view)
         showErrorMessage()
@@ -62,17 +63,45 @@ class MatchFragment : Fragment() {
 
         viewModel?.getSimilarMovies()
         viewModel?.moviesLiveData?.observe(viewLifecycleOwner, Observer { t ->
+
              t.results.let {
                  listMovie.addAll(it)
+                 setMoviePoster(listMovie[0].poster_path.toString())
+                 returButton.isEnabled = true
              }
         })
-        val heartMatch = view.findViewById<View>(R.id.button_ic_match_check) as Button
+
+
         heartMatch.setOnClickListener{
             contador += 1
             poster(listMovie, contador)
-            matchMovieList.add(listMovie[contador])
-            addUser()
+            if(!matchMovieList.contains(listMovie[contador])) {
+                matchMovieList.add(listMovie[contador])
+                addUser()
+                Toast.makeText(requireContext(), "Match realizado com sucesso", Toast.LENGTH_LONG).show()
+                returButton.isEnabled = true
+            }else {
+                Toast.makeText(requireContext(), "Match já foi realizado", Toast.LENGTH_LONG).show()
+            }
+
         }
+
+
+        exitButton.setOnClickListener{
+            contador +=1
+            poster(listMovie, contador)
+            returButton.isEnabled = true
+        }
+
+            returButton.setOnClickListener {
+                if(listMovie[0] != listMovie[contador]){
+                   poster(listMovie, contador)
+                   contador -= 1
+                }
+
+            }
+
+
 
     }
 
