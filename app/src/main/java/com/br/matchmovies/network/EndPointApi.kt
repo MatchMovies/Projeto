@@ -9,7 +9,6 @@ import com.br.matchmovies.model.modelMovieDetails.MovieDetails
 import com.br.matchmovies.model.modelProvider.MovieWatchProviders
 import com.br.matchmovies.model.modelRateMovie.RateMovieRequest
 import com.br.matchmovies.model.modelRateMovie.RateMovieResponse
-import com.br.matchmovies.model.modelTESTE.ListTest
 import com.br.matchmovies.model.modelSimilar.SimilarMovies
 import com.br.matchmovies.model.modelSimilarTvSeries.SimilarTvSeries
 import com.br.matchmovies.model.modelVideoMovie.Trailer
@@ -112,12 +111,4 @@ interface EndPointApi {
         @Query("language") language: String?
     ) : GenreList
 
-    //------------------------------------------------------//
-
-    @GET("list/{list_id}")
-    suspend fun getResponseMovieDetailsList(
-            @Path("list_id") listId: String?,
-            @Query("api_key") apiKey: String?,
-            @Query("language") language: String?
-    ) : ListTest
 }

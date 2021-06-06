@@ -4,17 +4,19 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.*
 import android.widget.RatingBar.OnRatingBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
-import com.br.matchmovies.model.modelTESTE.Item
+import com.br.matchmovies.model.modelDatabase.*
+import com.br.matchmovies.model.modelSimilarTvSeries.Result
 import com.br.matchmovies.repository.SingletonConfiguration
 import com.br.matchmovies.viewmodel.TvShowDetailsViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 class TvShowDetailsActivity : AppCompatActivity() {
@@ -38,8 +40,13 @@ class TvShowDetailsActivity : AppCompatActivity() {
     private val textProvider by lazy { findViewById<TextView>(R.id.tv_provider) }
     private val layoutProvider by lazy { findViewById<LinearLayout>(R.id.layout_provider) }
     lateinit var videoId: String
-    lateinit var tvShow: Item
+    lateinit var tvShow: Result
     private val configuration = SingletonConfiguration.config
+
+    private var firestoreDb = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
+
+    private val tvShowList = mutableListOf<Result>()
 
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(TvShowDetailsViewModel::class.java)
@@ -48,12 +55,12 @@ class TvShowDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tv_show_details)
-
+        firebaseAuth = FirebaseAuth.getInstance()
         configToolbar()
         showErrorMessage()
 
         val info = intent.extras
-        tvShow = info?.getSerializable("tvshow") as Item
+        tvShow = info?.getSerializable("tvshow") as Result
 
         viewModel.configMovieID(tvShow.id)
 
@@ -114,6 +121,7 @@ class TvShowDetailsActivity : AppCompatActivity() {
             .setTitle("Tem certeza?")
             .setMessage("Ao desfazer o match ${title.text} sairá da sua lista de filmes. Deseja continuar?")
             .setPositiveButton("Sim, tenho certeza") { _, _ ->
+                getUserSeries()
                 onBackPressed()
                 Toast.makeText(this, "Match com ${title.text} desfeito!", Toast.LENGTH_LONG).show()
             }.setNegativeButton("Cancelar") { dialog, _ ->
@@ -262,5 +270,55 @@ class TvShowDetailsActivity : AppCompatActivity() {
             }
         }
         return builder
+    }
+
+    private fun getUserSeries() {
+        firebaseAuth.currentUser?.let { user ->
+            firestoreDb.collection("users")
+                .document(user.uid)
+                .collection("series")
+                .document("matchSeries")
+                .get()
+                .addOnSuccessListener {
+                    val us = it.toObject(UserSeries::class.java)
+                    if (us != null) {
+                        us.series?.nameSeries?.let { fav ->
+                            if(fav.isNotEmpty()){
+                                removeData(fav)
+                            }
+                        }
+                    }
+                }.addOnFailureListener {
+                    it
+                }
+        }
+    }
+    private fun removeData(fav: List<Result>) {
+        tvShowList.addAll(fav)
+        tvShowList.remove(tvShow)
+        updateList()
+    }
+
+    private fun updateList() {
+        firebaseAuth.currentUser?.let { user ->
+            val subject = Subject("Firebase Database")
+            val userDb = UserSeries(
+                user.email ?: "",
+                user.displayName,
+                subject,
+                FavoriteSeries(tvShowList)
+            )
+
+            firestoreDb.collection("users")
+                .document(user.uid)
+                .collection("series")
+                .document("matchSeries")
+                .set(userDb)
+                .addOnSuccessListener {
+                    it
+                }.addOnFailureListener {
+                    it
+                }
+        }
     }
 }
