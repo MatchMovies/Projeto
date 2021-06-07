@@ -20,7 +20,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="93dp"
+        android:layout_height="100dp"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="10dp"
@@ -41,8 +41,10 @@
             android:id="@+id/fiel_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:hint="E-mail"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_marginTop="30dp"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -64,8 +66,10 @@
             android:id="@+id/fiel_pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:hint="Senha"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:inputType="textPassword"/>
         <TextView
             android:id="@+id/mensagem_erro"
@@ -89,6 +93,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:gravity="center"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:text="Entar"
                 android:backgroundTint="@color/purple_800"
                 android:textColor="#F4FAFA"
@@ -104,6 +110,9 @@
         android:gravity="center|top"
         android:text="Esqueci a senha"
         android:layout_marginTop="17dp"/>
+    <Space
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
     
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -112,7 +121,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#A1000000"
+            android:background="#FFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

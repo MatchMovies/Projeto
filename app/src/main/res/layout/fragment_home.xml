@@ -83,7 +83,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="280dp"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_home_filme"
+            android:drawableLeft="@drawable/filmes"
             app:backgroundTint="#0062044D"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -93,11 +93,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="280dp"
-            android:layout_marginEnd="34dp"
+            android:layout_marginEnd="32dp"
             android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_home_series"
+            android:drawableLeft="@drawable/series"
             app:backgroundTint="#00FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_ic_home_filme"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
