@@ -16,20 +16,25 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="400dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="1dp"
             android:gravity="center"
             android:text="@string/message_home"
             android:textIsSelectable="false"
             android:textSize="40dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="1dp"
             android:layout_marginEnd="200dp"
             android:layout_marginBottom="100dp"
             android:gravity="center"
@@ -50,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"
+            android:layout_marginTop="1dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="100dp"
             android:gravity="center"
@@ -59,10 +65,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_ic_home_filme"
-            app:layout_constraintVertical_bias="0.245" />
+            app:layout_constraintVertical_bias="0.566" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -80,25 +86,33 @@
             android:id="@+id/button_ic_home_filme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="280dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="5dp"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_home_filme"
             app:backgroundTint="#0062044D"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toStartOf="@+id/button_ic_home_series"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
             android:id="@+id/button_ic_home_series"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="280dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="34dp"
+            android:layout_marginBottom="5dp"
             android:background="#00FFFFFF"
             android:drawableLeft="@drawable/ic_home_series"
             app:backgroundTint="#00FFFFFF"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            app:layout_constraintStart_toEndOf="@+id/button_ic_home_filme"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

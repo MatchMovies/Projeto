@@ -1,5 +1,6 @@
 package com.br.matchmovies.model.modelDetailsList
 
+import com.br.matchmovies.adapter.TypeMatch
 import java.io.Serializable
 
 
@@ -19,4 +20,9 @@ data class Item(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-) : Serializable
+) : Serializable, TypeMatch {
+
+    override fun getType(): Int {
+        return TypeMatch.movie
+    }
+}

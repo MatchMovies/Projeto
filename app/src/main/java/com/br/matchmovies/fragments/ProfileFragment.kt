@@ -41,8 +41,8 @@ class ProfileFragment : Fragment() {
     var viewVisibleContato: Boolean = false
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
         val viewFragment = inflater.inflate(R.layout.fragment_profile, container, false)
@@ -54,12 +54,12 @@ class ProfileFragment : Fragment() {
 /*        val btnEditProfile = view.findViewById<View>(R.id.btn_editarPerfil) as Button
         val btnSair = view.findViewById<View>(R.id.ib_exit) as ImageButton*/
 
-   /*    btnBack.setOnClickListener {
-            val transition = requireActivity().supportFragmentManager.beginTransaction()
-            transition.replace(R.id.fl_wrapper, HomeFragment())
-            transition.addToBackStack(null)
-            transition.commit()
-        }*/
+        /*    btnBack.setOnClickListener {
+                 val transition = requireActivity().supportFragmentManager.beginTransaction()
+                 transition.replace(R.id.fl_wrapper, HomeFragment())
+                 transition.addToBackStack(null)
+                 transition.commit()
+             }*/
 
 
         val btnEditProfile = view.findViewById<View>(R.id.btn_editarPerfil) as Button
@@ -68,9 +68,9 @@ class ProfileFragment : Fragment() {
 
 
         btnEditProfile.setOnClickListener {
-                val intent = Intent(requireContext(), CadastroActivity::class.java)
-                startActivity(intent)
-            }
+            val intent = Intent(requireContext(), CadastroActivity::class.java)
+            startActivity(intent)
+        }
 
         btnSair.setOnClickListener {
             this.onDestroy()
@@ -172,5 +172,3 @@ class ProfileFragment : Fragment() {
 
 
 }
-
-
