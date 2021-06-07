@@ -31,7 +31,6 @@ class MatchMoviesViewModel : ViewModel() {
             repository.getSimilarMovieDetails("203217").let { movieSimilarResponse ->
                 moviesLiveData.postValue(movieSimilarResponse)
               }
-
             }catch (error: Throwable){
 
             handleError(error)
@@ -39,7 +38,6 @@ class MatchMoviesViewModel : ViewModel() {
             loading.postValue(false)
         }
     }
-
 
     private fun handleError(error: Throwable) {
         when(error){
