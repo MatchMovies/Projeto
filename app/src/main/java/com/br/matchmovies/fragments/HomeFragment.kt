@@ -36,10 +36,11 @@ class HomeFragment : Fragment() {
 
         btnSeries.setOnClickListener{
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fl_wrapper, MatchFragment())
+            transaction.replace(R.id.fl_wrapper, SeriesFragment())
             transaction.addToBackStack(null)
             transaction.commit()
         }
+
 
         return view
     }

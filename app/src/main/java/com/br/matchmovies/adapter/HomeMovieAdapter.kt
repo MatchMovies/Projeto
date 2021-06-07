@@ -7,10 +7,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.br.matchmovies.R
-import com.br.matchmovies.model.modelDetailsList.Item
-import com.br.matchmovies.model.modelDetailsList.MovieDetailsList
+import com.br.matchmovies.model.MatchMovieList
 
-class HomeMovieAdapter(private val listMoviesList: List<MovieDetailsList>, val callback: (Item) -> Unit) :
+class HomeMovieAdapter(private val listMoviesList: List<MatchMovieList>, val callback: (TypeMatch) -> Unit) :
         RecyclerView.Adapter<HomeMovieAdapter.MatchViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeMovieAdapter.MatchViewHolder {
