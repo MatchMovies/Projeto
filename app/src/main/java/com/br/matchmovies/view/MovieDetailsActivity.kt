@@ -12,9 +12,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
-import com.br.matchmovies.model.modelTESTE.Item
+import com.br.matchmovies.adapter.TypeMatch
+import com.br.matchmovies.model.MatchMovieList
+import com.br.matchmovies.model.modelDatabase.FavoriteMovies
+import com.br.matchmovies.model.modelDatabase.Subject
+import com.br.matchmovies.model.modelDatabase.UserMovies
+import com.br.matchmovies.model.modelSimilar.Result
 import com.br.matchmovies.repository.SingletonConfiguration
 import com.br.matchmovies.viewmodel.MovieDetailsViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
 
@@ -39,8 +47,13 @@ class MovieDetailsActivity : AppCompatActivity() {
     private val textProvider by lazy { findViewById<TextView>(R.id.tv_provider) }
     private val layoutProvider by lazy { findViewById<LinearLayout>(R.id.layout_provider) }
     lateinit var videoId: String
-    lateinit var movie: Item
+    lateinit var movie: Result
     private val configuration = SingletonConfiguration.config
+
+    private var firestoreDb = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
+
+    private val movieList = mutableListOf<Result>()
 
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(MovieDetailsViewModel::class.java)
@@ -49,12 +62,13 @@ class MovieDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
+        firebaseAuth = FirebaseAuth.getInstance()
 
         configToolbar()
         showErrorMessage()
 
         val info = intent.extras
-        movie = info?.getSerializable("movie") as Item
+        movie = info?.getSerializable("movie") as Result
 
         viewModel.configMovieID(movie.id)
 
@@ -115,6 +129,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             .setTitle("Tem certeza?")
             .setMessage("Ao desfazer o match ${title.text} sairá da sua lista de filmes. Deseja continuar?")
             .setPositiveButton("Sim, tenho certeza") { _, _ ->
+                getUserMovies()
                 onBackPressed()
                 Toast.makeText(this, "Match com ${title.text} desfeito!", Toast.LENGTH_LONG).show()
             }.setNegativeButton("Cancelar") { dialog, _ ->
@@ -263,5 +278,56 @@ class MovieDetailsActivity : AppCompatActivity() {
             }
         }
         return builder
+    }
+
+    private fun getUserMovies() {
+        firebaseAuth.currentUser?.let { user ->
+            firestoreDb.collection("users")
+                .document(user.uid)
+                .collection("movies")
+                .document("matchMovies")
+                .get()
+                .addOnSuccessListener {
+                    val us = it.toObject(UserMovies::class.java)
+                    if (us != null) {
+                        us.movies?.nameMovies?.let { fav ->
+                            if(fav.isNotEmpty()){
+                                removeData(fav)
+                            }
+                        }
+                    }
+                }.addOnFailureListener {
+                    it
+                }
+        }
+    }
+
+    private fun removeData(fav: List<Result>) {
+        movieList.addAll(fav)
+        movieList.remove(movie)
+        updateList()
+    }
+
+    private fun updateList() {
+        firebaseAuth.currentUser?.let { user ->
+            val subject = Subject("Firebase Database")
+            val userDb = UserMovies(
+                user.email ?: "",
+                user.displayName,
+                subject,
+                FavoriteMovies(movieList)
+            )
+
+            firestoreDb.collection("users")
+                .document(user.uid)
+                .collection("movies")
+                .document("matchMovies")
+                .set(userDb)
+                .addOnSuccessListener {
+                    it
+                }.addOnFailureListener {
+                    it
+                }
+        }
     }
 }

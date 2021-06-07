@@ -8,7 +8,6 @@ import com.br.matchmovies.model.modelGenreList.GenreList
 import com.br.matchmovies.model.modelProvider.MovieWatchProviders
 import com.br.matchmovies.model.modelRateMovie.RateMovieRequest
 import com.br.matchmovies.model.modelRateMovie.RateMovieResponse
-import com.br.matchmovies.model.modelTESTE.ListTest
 import com.br.matchmovies.model.modelSimilar.SimilarMovies
 import com.br.matchmovies.model.modelSimilarTvSeries.SimilarTvSeries
 import com.br.matchmovies.model.modelVideoMovie.Trailer
@@ -96,10 +95,5 @@ class RepositoryApi {
 
         suspend fun getGenreTVShowList(): GenreList {
             return serviceMovies.getResponseGenreTvList(API_KEY, "pt-BR")
-        }
-
-        //-----------------------------------------------------------------------------//
-        suspend fun getMovieDetailsList(listId: String): ListTest {
-            return serviceMovies.getResponseMovieDetailsList(listId, API_KEY, "pt-BR")
         }
     }

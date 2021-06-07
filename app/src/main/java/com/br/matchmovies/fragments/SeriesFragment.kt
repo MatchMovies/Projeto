@@ -57,6 +57,7 @@ class SeriesFragment : Fragment() {
         val exitButton = view.findViewById<View>(R.id.button_series_ic_close) as Button
 
         firebaseAuth = FirebaseAuth.getInstance()
+        getUserSeries()
         showProgressBar(view)
         showErrorMessage()
         // configMovie()
@@ -142,9 +143,29 @@ class SeriesFragment : Fragment() {
 
             firestoreDb.collection("users")
                 .document(user.uid)
+                .collection("series")
+                .document("matchSeries")
                 .set(userDb)
                 .addOnSuccessListener {
                     it
+                }.addOnFailureListener {
+                    it
+                }
+        }
+    }
+
+    private fun getUserSeries() {
+        firebaseAuth.currentUser?.let { user ->
+            firestoreDb.collection("users")
+                .document(user.uid)
+                .collection("series")
+                .document("matchSeries")
+                .get()
+                .addOnSuccessListener {
+                    val us = it.toObject(UserSeries::class.java)
+                    if (us != null) {
+                        us.series?.nameSeries?.let { fav -> matchSeriesList.addAll(fav) }
+                    }
                 }.addOnFailureListener {
                     it
                 }

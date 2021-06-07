@@ -33,9 +33,9 @@ class MatchFragment : Fragment() {
     var contador = 0
 
     private val viewModel by lazy {
-      activity?.let {
-          ViewModelProviders.of(it).get(MatchMoviesViewModel::class.java)
-      }
+        activity?.let {
+            ViewModelProviders.of(it).get(MatchMoviesViewModel::class.java)
+        }
     }
     lateinit var progressBar: ProgressBar
 
@@ -56,58 +56,56 @@ class MatchFragment : Fragment() {
         val exitButton = view.findViewById<View>(R.id.button_ic_match_close) as Button
 
         firebaseAuth = FirebaseAuth.getInstance()
+        getUserMovies()
+
         showProgressBar(view)
         showErrorMessage()
-       // configMovie()
+        // configMovie()
 
 
         viewModel?.getSimilarMovies()
         viewModel?.moviesLiveData?.observe(viewLifecycleOwner, Observer { t ->
 
-             t.results.let {
-                 listMovie.addAll(it)
-                 setMoviePoster(listMovie[0].poster_path.toString())
-                 returButton.isEnabled = true
-             }
+            t.results.let {
+                listMovie.addAll(it)
+                setMoviePoster(listMovie[0].poster_path.toString())
+                returButton.isEnabled = true
+            }
         })
 
 
-        heartMatch.setOnClickListener{
+        heartMatch.setOnClickListener {
             contador += 1
             poster(listMovie, contador)
-            if(!matchMovieList.contains(listMovie[contador])) {
+            if (!matchMovieList.contains(listMovie[contador])) {
                 matchMovieList.add(listMovie[contador])
                 addUser()
-                Toast.makeText(requireContext(), "Match realizado com sucesso", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Match realizado com sucesso", Toast.LENGTH_SHORT)
+                    .show()
                 returButton.isEnabled = true
-            }else {
-                Toast.makeText(requireContext(), "Match já foi realizado", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(requireContext(), "Match já foi realizado", Toast.LENGTH_SHORT).show()
             }
 
         }
 
-
-        exitButton.setOnClickListener{
-            contador +=1
+        exitButton.setOnClickListener {
+            contador += 1
             poster(listMovie, contador)
             returButton.isEnabled = true
         }
 
-            returButton.setOnClickListener {
-                if(listMovie[0] != listMovie[contador]){
-                   poster(listMovie, contador)
-                   contador -= 1
-                }
-
+        returButton.setOnClickListener {
+            if (listMovie[0] != listMovie[contador]) {
+                poster(listMovie, contador)
+                contador -= 1
             }
-
-
-
+        }
     }
 
-    private fun poster(lista : List<Result>, contador : Int){
+    private fun poster(lista: List<Result>, contador: Int) {
 
-            setMoviePoster(lista[contador].poster_path.toString())
+        setMoviePoster(lista[contador].poster_path.toString())
 
     }
 
@@ -132,8 +130,9 @@ class MatchFragment : Fragment() {
     }
 
     private fun setMoviePoster(posterPath: String) {
-        val imageMovie =  view?.findViewById<ImageView>(R.id.ic_match_movie)
-        val imageUrl = "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(5)}${posterPath}"
+        val imageMovie = view?.findViewById<ImageView>(R.id.ic_match_movie)
+        val imageUrl =
+            "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(5)}${posterPath}"
         Picasso.get().load(imageUrl).into(imageMovie)
     }
 
@@ -149,9 +148,29 @@ class MatchFragment : Fragment() {
 
             firestoreDb.collection("users")
                 .document(user.uid)
+                .collection("movies")
+                .document("matchMovies")
                 .set(userDb)
                 .addOnSuccessListener {
                     it
+                }.addOnFailureListener {
+                    it
+                }
+        }
+    }
+
+    private fun getUserMovies() {
+        firebaseAuth.currentUser?.let { user ->
+            firestoreDb.collection("users")
+                .document(user.uid)
+                .collection("movies")
+                .document("matchMovies")
+                .get()
+                .addOnSuccessListener {
+                    val us = it.toObject(UserMovies::class.java)
+                    if (us != null) {
+                        us.movies?.nameMovies?.let { fav -> matchMovieList.addAll(fav) }
+                    }
                 }.addOnFailureListener {
                     it
                 }
