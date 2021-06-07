@@ -11,7 +11,7 @@
         android:id="@+id/logo_matchmovies"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:src="@drawable/logoverticalmatchmovies"
+        android:src="@drawable/ic_logoverticalmatchmovies"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
 
