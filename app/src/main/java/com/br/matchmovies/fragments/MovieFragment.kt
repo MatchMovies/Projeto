@@ -2,7 +2,6 @@ package com.br.matchmovies.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -11,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,19 +33,36 @@ class MovieFragment : Fragment() {
 
     private val recycler by lazy { view?.findViewById<RecyclerView>(R.id.rv_list_of_movie_list) }
     private val textNoMatch by lazy { view?.findViewById<TextView>(R.id.textNoMatch) }
+    private val progressBar by lazy { view?.findViewById<ProgressBar>(R.id.progressBar_list_movie) }
     private val viewModel by lazy { ViewModelProviders.of(this).get(MoviesViewModel::class.java) }
 
-    lateinit var progressBar: ProgressBar
+  //  lateinit var progressBar: ProgressBar
     private var firestoreDb = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
 
+    var loading = true
+    var shoudRefreshOnResume = false
 
     private val matchList = mutableListOf<MatchMovieList>()
 
+    override fun onResume() {
+        super.onResume()
+        if (shoudRefreshOnResume) {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fl_wrapper, MovieFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        shoudRefreshOnResume = true
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragment_movie, container, false)
     }
@@ -56,18 +72,17 @@ class MovieFragment : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
+        showProgressBar()
         getUserMovies()
         getUserSeries()
-        configMsg()
-//        showProgressBar(view)
-//        showErrorMessage()
+
     }
 
     private fun configMsg() {
-        if (matchList.isNotEmpty()){
-            textNoMatch?.visibility  = GONE
-        } else{
+        if (matchList.isEmpty()){
             textNoMatch?.visibility  = VISIBLE
+        } else{
+            textNoMatch?.visibility  = GONE
         }
     }
 
@@ -88,6 +103,7 @@ class MovieFragment : Fragment() {
                             }
                         }
                     }
+                    loading = false
                 }.addOnFailureListener {
                     it
                 }
@@ -111,6 +127,7 @@ class MovieFragment : Fragment() {
                             }
                         }
                     }
+                    loading  = false
                 }.addOnFailureListener {
                     it
                 }
@@ -118,20 +135,22 @@ class MovieFragment : Fragment() {
     }
 
     private fun configData(name: String, fav: List<TypeMatch>) {
-
         matchList.add(MatchMovieList(name, fav))
-        configMsg()
-        initRecycler()
 
+        if(!loading){
+            initRecycler()
+            progressBar?.visibility = GONE
+        }
+        configMsg()
     }
 
     private fun initRecycler() {
-
         val adapter = HomeMovieAdapter(matchList) { Item ->
            navigateToMovieDetails(Item)
         }
         recycler?.adapter = adapter
         recycler?.layoutManager = LinearLayoutManager(requireContext())
+        adapter.notifyDataSetChanged()
     }
 
     private fun navigateToMovieDetails(item: TypeMatch) {
@@ -150,6 +169,14 @@ class MovieFragment : Fragment() {
         }
     }
 
+    private fun showProgressBar() {
+            if (loading) {
+                progressBar?.visibility  = VISIBLE
+            } else {
+                progressBar?.visibility = GONE
+            }
+    }
+
     private fun showErrorMessage() {
         viewModel.errorMessage.observe(this, Observer {
             it?.let {
@@ -158,15 +185,4 @@ class MovieFragment : Fragment() {
         })
     }
 
-    private fun showProgressBar(view: View) {
-        progressBar = view.findViewById(R.id.progressBar_list_movie)
-
-        viewModel.loading.observe(this, Observer {
-            if (it) {
-                progressBar.visibility = VISIBLE
-            } else {
-                progressBar.visibility = GONE
-            }
-        })
-    }
 }
