@@ -5,18 +5,17 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.br.matchmovies.R
 import com.br.matchmovies.databinding.ActivityMainLoginBinding
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
+import com.facebook.internal.WebDialog
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -24,10 +23,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_forgot_password.*
 import java.lang.Exception
 import javax.security.auth.callback.Callback
 import kotlin.math.sign
@@ -44,13 +45,18 @@ class LoginActivity : AppCompatActivity()
 
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         callbackManager = CallbackManager.Factory.create()
         firebaseAuth = FirebaseAuth.getInstance()
+
+
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -58,7 +64,10 @@ class LoginActivity : AppCompatActivity()
 
         googleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions)
 
-        
+        binding.btesqueci.setOnClickListener {
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.btcadastrar.setOnClickListener {
             val intent = Intent(this, CadastroActivity::class.java)
@@ -85,7 +94,13 @@ class LoginActivity : AppCompatActivity()
             signFacebook()
         }
 
+
+
+
+
     }
+
+
 
     fun sigIn(view: View){
         val signInIntent = googleSignInClient.signInIntent

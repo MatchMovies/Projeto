@@ -1,6 +1,5 @@
 package com.br.matchmovies.view
 
-import android.content.Context
 import android.os.Bundle
 import android.provider.ContactsContract
 import androidx.appcompat.app.AppCompatActivity

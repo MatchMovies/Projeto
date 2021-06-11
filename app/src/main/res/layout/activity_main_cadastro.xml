@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,95 +12,193 @@
         android:layout_height="wrap_content"
         android:background="@color/purple_900"
         android:foreground="@drawable/ic_logo_horizontal"
-        app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
         android:foregroundGravity="center"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
+
+    <ImageView
+        android:id="@+id/iv_name"
+        android:layout_width="57dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_phone"
+        app:layout_constraintEnd_toStartOf="@+id/edit_nome"
+        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarCadastro"
+        app:layout_constraintVertical_bias="0.85"
+        app:srcCompat="@drawable/ic_baseline_person_24" />
+
+    <ImageView
+        android:id="@+id/iv_phone"
+        android:layout_width="57dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_phone2"
+        app:layout_constraintEnd_toStartOf="@+id/edit_numerotelefone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_name"
+        app:srcCompat="@drawable/ic_baseline_phone_iphone_24" />
+
+    <ImageView
+        android:id="@+id/iv_phone2"
+        android:layout_width="57dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/iv_password"
+        app:layout_constraintEnd_toStartOf="@+id/edit_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_phone"
+        app:srcCompat="@drawable/ic_baseline_email_24" />
+
+    <ImageView
+        android:id="@+id/iv_password"
+        android:layout_width="57dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btcadastro"
+        app:layout_constraintEnd_toStartOf="@+id/edit_senha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_phone2"
+        app:srcCompat="@drawable/ic_baseline_lock_24" />
 
     <EditText
         android:id="@+id/edit_nome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="-0dp"
-        android:hint="Nome Completo"
+        android:layout_width="315dp"
+        android:layout_height="63dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/edit_text_cadastro"
+        android:hint="Nome Completo"
+        android:inputType="textPersonName"
+        android:maxLines="1"
         android:padding="20dp"
         android:textColor="@color/teal_200"
         android:textColorHint="@color/grey"
         android:textSize="18sp"
-        android:maxLines="1"
-        android:inputType="textPersonName"/>
+        app:layout_constraintBottom_toTopOf="@+id/edit_numerotelefone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_name"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarCadastro" />
 
     <EditText
         android:id="@+id/edit_numerotelefone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="-0dp"
-        android:hint="Telefone (11)"
+        android:layout_width="315dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/edit_text_cadastro"
+        android:hint="Telefone (11)"
+        android:inputType="phone"
+        android:maxLines="1"
         android:padding="20dp"
         android:textColor="@color/teal_200"
         android:textColorHint="@color/grey"
         android:textSize="18sp"
-        android:maxLines="1"
-        android:inputType="phone"/>
+        app:layout_constraintBottom_toTopOf="@+id/edit_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_phone"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
+
     <EditText
         android:id="@+id/edit_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="-0dp"
-        android:hint="E-mail"
+        android:layout_width="315dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/edit_text_cadastro"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
         android:padding="20dp"
         android:textColor="@color/teal_200"
         android:textColorHint="@color/grey"
         android:textSize="18sp"
-        android:maxLines="1"
-        android:inputType="textEmailAddress"/>
+        app:layout_constraintBottom_toTopOf="@+id/edit_senha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_phone2"
+        app:layout_constraintTop_toBottomOf="@+id/edit_numerotelefone" />
+
     <EditText
         android:id="@+id/edit_senha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="-0dp"
-        android:hint="Senha"
+        android:layout_width="315dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/edit_text_cadastro"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:maxLines="1"
         android:padding="20dp"
         android:textColor="@color/teal_200"
         android:textColorHint="@color/grey"
         android:textSize="18sp"
-        android:maxLines="1"
-        android:inputType="textPassword"/>
+        app:layout_constraintBottom_toTopOf="@+id/btcadastro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_password"
+        app:layout_constraintTop_toBottomOf="@+id/edit_email" />
 
     <Button
         android:id="@+id/btcadastro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="215dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/purple_800"
+        android:padding="15dp"
         android:text="CADASTRAR"
+        android:textColor="@color/CorTexto"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/yellow"
-        android:padding="15dp"
-        android:layout_margin="20dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_senha"
+        app:rippleColor="#9C989E" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/toolbarCadastro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/mensagem_erro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:text=""
         android:textColor="@color/red"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_gravity="center"/>
+        app:layout_constraintBottom_toTopOf="@+id/btcadastro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_senha" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
