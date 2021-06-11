@@ -214,7 +214,8 @@
                         app:layout_constraintHorizontal_bias="0.09"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_email"
-                        app:layout_constraintVertical_bias="0.0" />
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/imageView_google"
@@ -230,7 +231,8 @@
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_email"
-                        app:tint="@color/CorFundo" />
+                        app:tint="@color/CorFundo"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/imageView_facebook"
@@ -246,7 +248,8 @@
                         app:layout_constraintHorizontal_bias="0.83"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_email"
-                        app:tint="@color/CorFundo" />
+                        app:tint="@color/CorFundo"
+                        tools:visibility="gone" />
 
                     <Button
                         android:id="@+id/btn_editarPerfil"
@@ -343,7 +346,7 @@
                     android:id="@+id/constraintViewMoreInfoMm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <ImageView
                         android:id="@+id/iv_matchs"
@@ -384,7 +387,8 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
                         app:tint="#D32F2F"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView3"
@@ -397,7 +401,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/textView5"
                         app:layout_constraintStart_toEndOf="@+id/textView2"
                         app:layout_constraintTop_toBottomOf="@+id/comedia"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView6"
@@ -410,7 +415,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/textView5"
                         app:layout_constraintTop_toBottomOf="@+id/iv_doc"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView2"
@@ -424,7 +430,8 @@
                         app:layout_constraintHorizontal_bias="0.24"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_romance"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/textView5"
@@ -437,7 +444,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/textView6"
                         app:layout_constraintStart_toEndOf="@+id/textView3"
                         app:layout_constraintTop_toBottomOf="@+id/iv_acao"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_acao"
@@ -452,7 +460,8 @@
                         app:layout_constraintStart_toEndOf="@+id/comedia"
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
                         app:tint="#090909"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_doc"
@@ -468,7 +477,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
                         app:layout_constraintVertical_bias="0.0"
                         app:tint="#512DA8"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/comedia"
@@ -482,7 +492,8 @@
                         app:layout_constraintStart_toEndOf="@+id/iv_romance"
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme2"
                         app:tint="#FBC02D"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_comida"
@@ -495,7 +506,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/iv_ficcao"
                         app:layout_constraintStart_toEndOf="@+id/iv_medico"
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_meus_generos_filme"
@@ -513,7 +525,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_matchs_series"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_matchs_series"
@@ -541,7 +554,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tv_ficcao"
                         app:layout_constraintTop_toBottomOf="@+id/iv_reforma"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_comida"
@@ -554,7 +568,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/tv_ficcao"
                         app:layout_constraintStart_toEndOf="@+id/tv_medico"
                         app:layout_constraintTop_toBottomOf="@+id/iv_comida"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_medico"
@@ -567,7 +582,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/iv_comida"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
-                        app:tint="#D32F2F" />
+                        app:tint="#D32F2F"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_ficcao"
@@ -580,7 +596,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/tv_reforma"
                         app:layout_constraintStart_toEndOf="@+id/tv_comida"
                         app:layout_constraintTop_toBottomOf="@+id/iv_ficcao"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_reforma"
@@ -593,7 +610,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/iv_ficcao"
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
-                        app:tint="@color/purple_900" />
+                        app:tint="@color/purple_900"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_minhas_series"
@@ -625,7 +643,8 @@
                         app:layout_constraintEnd_toStartOf="@+id/tv_comida"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_medico"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <ImageView
                         android:id="@+id/iv_series"
@@ -641,7 +660,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView2"
                         tools:ignore="MissingConstraints" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/tn_matchs_series"
                         android:layout_width="38dp"
                         android:layout_height="43dp"
@@ -650,7 +669,8 @@
                         android:layout_marginBottom="8dp"
                         android:ems="10"
                         android:gravity="center_horizontal"
-                        android:text="8"
+                        android:text="0"
+                        android:textSize="20sp"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme"
@@ -672,7 +692,8 @@
                         app:layout_constraintStart_toEndOf="@+id/iv_comida"
                         app:layout_constraintTop_toBottomOf="@+id/tv_meus_generos_filme"
                         app:tint="#7B1FA2"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_meus_generos_filme2"
@@ -689,7 +710,8 @@
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_matchs" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_matchs"
+                        tools:visibility="gone" />
 
                     <TextView
                         android:id="@+id/tv_meus_filmes"
@@ -709,7 +731,7 @@
                         app:layout_constraintStart_toEndOf="@+id/iv_filmes"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/tn_matchs"
                         android:layout_width="38dp"
                         android:layout_height="43dp"
@@ -718,7 +740,8 @@
                         android:layout_marginBottom="8dp"
                         android:ems="10"
                         android:gravity="center_horizontal"
-                        android:text="32"
+                        android:text="0"
+                        android:textSize="20sp"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toTopOf="@+id/tv_meus_generos_filme2"
