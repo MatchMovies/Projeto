@@ -50,7 +50,7 @@ class ProfileFragment : Fragment() {
 
     val btnEditar by lazy { view?.findViewById<Button>(R.id.btn_editarPerfil) }
     val btnSair by lazy { view?.findViewById<View>(R.id.ib_exit) as ImageButton }
-    val tvfilmes by lazy { view?.findViewById<TextView>(R.id.tv_meus_generos_filme2) }
+    val tvfilmes by lazy { view?.findViewById<TextView>(R.id.tn_matchs) }
     val tvseries by lazy { view?.findViewById<TextView>(R.id.tn_matchs_series) }
     val tvnome by lazy { view?.findViewById<TextView>(R.id.tv_name) }
     val tvemail by lazy { view?.findViewById<TextView>(R.id.tv_email) }
