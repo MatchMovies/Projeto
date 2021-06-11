@@ -49,7 +49,7 @@ class ProfileFragment : Fragment() {
     var viewVisibleContato: Boolean = false
 
     val btnEditar by lazy { view?.findViewById<Button>(R.id.btn_editarPerfil) }
-    val btnSair by lazy { view?.findViewById<View>(R.id.ib_exit) as ImageButton }
+    val btnSair by lazy { view?.findViewById<ImageButton>(R.id.ib_exit) }
     val tvfilmes by lazy { view?.findViewById<TextView>(R.id.tn_matchs) }
     val tvseries by lazy { view?.findViewById<TextView>(R.id.tn_matchs_series) }
     val tvnome by lazy { view?.findViewById<TextView>(R.id.tv_name) }
@@ -71,7 +71,7 @@ class ProfileFragment : Fragment() {
             startActivity(intent)
         }
 
-        btnSair.setOnClickListener {
+        btnSair?.setOnClickListener {
             firebaseAuth.signOut()
             this.onDestroy()
         }
@@ -240,17 +240,18 @@ class ProfileFragment : Fragment() {
     private fun getCurrentUserPicture() {
         firebaseAuth?.let { user ->
             user.uid?.let {
-                firebaseStorage.getReference("uploads")
-                    .child(it)
-                    .downloadUrl
-                    .addOnSuccessListener { url ->
-                        Toast.makeText(requireContext(), "Picture url downloaded with success", Toast.LENGTH_LONG)
-                            .show()
-                        Picasso.get().load(url).into(fotoPerfil)
-                    }.addOnFailureListener {
-                        Toast.makeText(requireContext(), "Error downloading: ${it.message}", Toast.LENGTH_LONG)
-                            .show()
-                    }
+                Picasso.get().load(user.currentUser.photoUrl).into(fotoPerfil)
+//                firebaseStorage.getReference("uploads")
+//                    .child(it)
+//                    .downloadUrl
+//                    .addOnSuccessListener { url ->
+//                        Toast.makeText(requireContext(), "Picture url downloaded with success", Toast.LENGTH_LONG)
+//                            .show()
+//                        Picasso.get().load(url).into(fotoPerfil)
+//                    }.addOnFailureListener {
+//                        Toast.makeText(requireContext(), "Error downloading: ${it.message}", Toast.LENGTH_LONG)
+//                            .show()
+//                    }
             }
         }
     }

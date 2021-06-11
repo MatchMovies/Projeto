@@ -237,5 +237,4 @@
         tools:ignore="OnClick" />
 
 
-</ImageButton>
   </androidx.constraintlayout.widget.ConstraintLayout>
