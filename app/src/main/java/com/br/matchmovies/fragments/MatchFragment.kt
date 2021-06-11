@@ -75,7 +75,7 @@ class MatchFragment : Fragment() {
 
 
         heartMatch.setOnClickListener {
-            contador += 1
+
             poster(listMovie, contador)
             if (!matchMovieList.contains(listMovie[contador])) {
                 matchMovieList.add(listMovie[contador])
@@ -86,6 +86,7 @@ class MatchFragment : Fragment() {
             } else {
                 Toast.makeText(requireContext(), "Match já foi realizado", Toast.LENGTH_SHORT).show()
             }
+            contador += 1
 
         }
 

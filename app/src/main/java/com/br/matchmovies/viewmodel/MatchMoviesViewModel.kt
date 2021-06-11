@@ -28,7 +28,7 @@ class MatchMoviesViewModel : ViewModel() {
      fun getSimilarMovies() = CoroutineScope(Dispatchers.IO).launch {
         loading.postValue(true)
         try {
-            repository.getSimilarMovieDetails("203217").let { movieSimilarResponse ->
+            repository.getSimilarMovieDetails("244786").let { movieSimilarResponse ->
                 moviesLiveData.postValue(movieSimilarResponse)
               }
             }catch (error: Throwable){

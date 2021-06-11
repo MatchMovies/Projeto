@@ -10,10 +10,9 @@ import android.widget.*
 import android.widget.RatingBar.OnRatingBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
-import com.br.matchmovies.adapter.TypeMatch
-import com.br.matchmovies.model.MatchMovieList
 import com.br.matchmovies.model.modelDatabase.FavoriteMovies
 import com.br.matchmovies.model.modelDatabase.Subject
 import com.br.matchmovies.model.modelDatabase.UserMovies

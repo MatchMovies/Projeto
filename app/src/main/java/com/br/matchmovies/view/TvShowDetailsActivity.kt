@@ -112,7 +112,7 @@ class TvShowDetailsActivity : AppCompatActivity() {
         }
 
         btnShare.setOnClickListener {
-            shareText("Já assistiu a ${tvShow.name}? https://www.themoviedb.org/movie/${tvShow.id}")
+            shareText("Já assistiu a ${tvShow.name}? https://www.themoviedb.org/tv/${tvShow.id}")
         }
     }
 
