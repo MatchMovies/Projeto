@@ -35,10 +35,13 @@ class SeriesFragment : Fragment() {
     var contador = 0
 
 
-    private val viewModel by lazy {  activity?.let { ViewModelProviders.of(it).get(SeriesViewModel::class.java)}}
+    private val viewModel by lazy {
+        activity?.let {
+            ViewModelProviders.of(it).get(SeriesViewModel::class.java)
+        }
+    }
 
     lateinit var progressBar: ProgressBar
-
 
 
     override fun onCreateView(
@@ -72,34 +75,38 @@ class SeriesFragment : Fragment() {
             }
         })
 
-        heartMatch.setOnClickListener{
-            contador += 1
+        heartMatch.setOnClickListener {
+
             poster(listSeries, contador)
-            if(!matchSeriesList.contains(listSeries[contador])){
-            matchSeriesList.add(listSeries[contador])
-            addUser()
-            Toast.makeText(requireContext(), "Match realizado com sucesso", Toast.LENGTH_SHORT).show()
-            returButton.isEnabled = true
-        } else {
-                Toast.makeText(requireContext(), "Match já foi realizado", Toast.LENGTH_SHORT).show()
-          }
+            if (!matchSeriesList.contains(listSeries[contador])) {
+                matchSeriesList.add(listSeries[contador])
+                addUser()
+                Toast.makeText(requireContext(), "Match realizado com sucesso", Toast.LENGTH_SHORT)
+                    .show()
+                returButton.isEnabled = true
+            } else {
+                Toast.makeText(requireContext(), "Match já foi realizado", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            contador += 1
         }
 
-        exitButton.setOnClickListener{
-            contador +=1
+        exitButton.setOnClickListener {
+            contador += 1
             poster(listSeries, contador)
             returButton.isEnabled = true
         }
 
         returButton.setOnClickListener {
-            if(listSeries[0] != listSeries[contador]){
+            if (listSeries[0] != listSeries[contador]) {
                 poster(listSeries, contador)
                 contador -= 1
             }
         }
 
     }
-    private fun poster(lista : List<Result>, contador : Int){
+
+    private fun poster(lista: List<Result>, contador: Int) {
 
         setMoviePoster(lista[contador].poster_path.toString())
 
@@ -126,8 +133,9 @@ class SeriesFragment : Fragment() {
     }
 
     private fun setMoviePoster(posterPath: String) {
-        val imageMovie =  view?.findViewById<ImageView>(R.id.ic_match_movie)
-        val imageUrl = "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(5)}${posterPath}"
+        val imageMovie = view?.findViewById<ImageView>(R.id.ic_match_movie)
+        val imageUrl =
+            "${configuration?.images?.base_url}${configuration?.images?.poster_sizes?.get(5)}${posterPath}"
         Picasso.get().load(imageUrl).into(imageMovie)
     }
 
@@ -171,7 +179,6 @@ class SeriesFragment : Fragment() {
                 }
         }
     }
-
 
 
 }
