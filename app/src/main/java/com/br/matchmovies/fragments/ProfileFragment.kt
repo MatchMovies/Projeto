@@ -41,6 +41,16 @@ class ProfileFragment : Fragment() {
     lateinit var buttonExpandView4: ImageButton
     var viewVisibleContato: Boolean = false
 
+    val btnEditar by lazy { view?.findViewById<Button>(R.id.btn_editarPerfil) }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btnEditar?.setOnClickListener{
+            val intent = Intent(requireContext(), EditarCadastro::class.java)
+            startActivity(intent)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,26 +62,6 @@ class ProfileFragment : Fragment() {
         val viewFragmentGc = inflater.inflate(R.layout.fragment_profile, container, false)
         val viewFragmentContato = inflater.inflate(R.layout.fragment_profile, container, false)
         val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
-        val btnEditar by lazy { view?.findViewById<Button>(R.id.btn_editarPerfil) }
-
-        btnEditar.setOnClickListener {
-//            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.fl_wrapper, EditarCadastroFragment())
-//            transaction.addToBackStack(null)
-//            transaction.commit()
-
-            val view: View = inflater.inflate(
-                R.layout.fragment_profile,
-                container, false
-            )
-            val button = view.findViewById<View>(R.id.btn_editarPerfil) as Button
-            button.setOnClickListener(object : View.OnClickListener {
-                override fun onClick(v: View?) {
-                    val intent = Intent(requireContext(), EditarCadastro::class.java)
-                    startActivity(intent)
-                }
-            })
-        }
 
          initFields(viewFragment, viewFragmentMn, viewFragmentGc, viewFragmentContato)
         constraintViewCard.setOnClickListener {

@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchMovies"
         android:usesCleartextTraffic="true" >
-        <activity android:name=".view.EditarCadastroActivity" >
+        <activity android:name=".view.EditarCadastro" >
         </activity>
         <activity
             android:name=".view.TrailerActivity"
