@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.br.matchmovies">
+    package="com.br.matchmovies" >
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchMovies"
+
         android:usesCleartextTraffic="true">
         <activity android:name=".view.TvShowDetailsActivity"></activity>
+
+        android:usesCleartextTraffic="true" >
+        <activity android:name=".view.EditarCadastro" >
+        </activity>
+
         <activity
             android:name=".view.TrailerActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
@@ -27,7 +37,7 @@
         <!-- <activity android:name=".ActivityContract" /> -->
         <!-- <activity android:name=".ActivityContract" /> -->
         <activity android:name=".view.CadastroActivity" />
-        <activity android:name=".view.SplashActivity">
+        <activity android:name=".view.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,6 +48,18 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.br.matchmovies"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
     </application>
 
 </manifest>
