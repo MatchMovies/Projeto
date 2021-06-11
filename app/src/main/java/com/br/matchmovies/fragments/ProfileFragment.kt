@@ -13,6 +13,9 @@ import androidx.fragment.app.Fragment
 import com.br.matchmovies.R
 import com.br.matchmovies.view.EditarCadastro
 import com.br.matchmovies.view.MovieDetailsActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import java.io.Serializable
@@ -43,13 +46,17 @@ class ProfileFragment : Fragment() {
 
     val btnEditar by lazy { view?.findViewById<Button>(R.id.btn_editarPerfil) }
 
+    private var firestoreDb = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btnEditar?.setOnClickListener{
+        btnEditar?.setOnClickListener {
             val intent = Intent(requireContext(), EditarCadastro::class.java)
             startActivity(intent)
         }
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -63,7 +70,7 @@ class ProfileFragment : Fragment() {
         val viewFragmentContato = inflater.inflate(R.layout.fragment_profile, container, false)
         val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
 
-         initFields(viewFragment, viewFragmentMn, viewFragmentGc, viewFragmentContato)
+        initFields(viewFragment, viewFragmentMn, viewFragmentGc, viewFragmentContato)
         constraintViewCard.setOnClickListener {
             when (viewVisible) {
                 false -> expandCardview()
@@ -93,12 +100,12 @@ class ProfileFragment : Fragment() {
         return viewFragment
     }
 
-      private fun initFields(
-          viewFragment: View,
-          viewFragmentMn: View,
-          viewFragmentGc: View,
-          viewFragmentContato: View
-      ) {
+    private fun initFields(
+        viewFragment: View,
+        viewFragmentMn: View,
+        viewFragmentGc: View,
+        viewFragmentContato: View
+    ) {
         constraintViewMoreInfo = viewFragment.findViewById(R.id.constraintViewMoreInfo)
         constraintViewCard = viewFragment.findViewById(R.id.constraintViewCard)
         buttonExpandView = viewFragment.findViewById(R.id.buttonExpand)
@@ -111,7 +118,8 @@ class ProfileFragment : Fragment() {
         constraintViewCard3 = viewFragment.findViewById(R.id.constraintViewCardgc)
         buttonExpandView3 = viewFragment.findViewById(R.id.buttonExpand3)
 
-        constraintViewMoreInfoContato = viewFragment.findViewById(R.id.constraintViewMoreInfocontato)
+        constraintViewMoreInfoContato =
+            viewFragment.findViewById(R.id.constraintViewMoreInfocontato)
         constraintViewCardContato = viewFragment.findViewById(R.id.constraintViewCardcontato)
         buttonExpandView4 = viewFragment.findViewById(R.id.buttonExpand4)
 
@@ -123,16 +131,19 @@ class ProfileFragment : Fragment() {
         constraintViewMoreInfo.visibility = View.GONE
         buttonExpandView.setBackgroundResource(R.drawable.ic_baseline_expand_more_24)
     }
-    private fun retractCardview2(){
+
+    private fun retractCardview2() {
         viewVisibleMm = false
         constraintViewMoreInfoMm.visibility = View.GONE
         buttonExpandView2.setBackgroundResource(R.drawable.ic_baseline_expand_more_24)
     }
-    private fun retractCardview3(){
+
+    private fun retractCardview3() {
         viewVisibleGc = false
         constraintViewMoreInfoGc.visibility = View.GONE
         buttonExpandView3.setBackgroundResource(R.drawable.ic_baseline_expand_more_24)
     }
+
     private fun retractCardview4() {
         viewVisibleContato = false
         constraintViewMoreInfoContato.visibility = View.GONE
@@ -146,22 +157,43 @@ class ProfileFragment : Fragment() {
         buttonExpandView.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
     }
 
-    private fun expandCardview2(){
+    private fun expandCardview2() {
         viewVisibleMm = true
         constraintViewMoreInfoMm.visibility = View.VISIBLE
         buttonExpandView2.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
     }
+
     private fun expandCardview3() {
         viewVisibleGc = true
         constraintViewMoreInfoGc.visibility = View.VISIBLE
         buttonExpandView3.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
 
     }
+
     private fun expandCardview4() {
         viewVisibleContato = true
         constraintViewMoreInfoContato.visibility = View.VISIBLE
         buttonExpandView4.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
     }
+
+//    private fun getUserMovies() {
+//        firebaseAuth.currentUser?.let { user ->
+//            firestoreDb.collection("users")
+//                .document(user.uid)
+//                .collection("movies")
+//                .document("matchMovies")
+//                .get()
+//                .addOnSuccessListener {
+//                    val us = it.toObject(UserMovies::class.java)
+//                    if (us != null) {
+//                        us.movies?.nameMovies?.let { fav -> matchMovieList.addAll(fav) }
+//
+//                    }.addOnFailureListener {
+//                        it
+//                    }
+//                }
+//        }
+//    }
 }
 
 
