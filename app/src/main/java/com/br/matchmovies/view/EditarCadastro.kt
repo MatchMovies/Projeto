@@ -126,6 +126,7 @@ class EditarCadastro : AppCompatActivity() {
                     Toast.makeText(this, "Error downloading: ${it.message}", Toast.LENGTH_LONG)
                         .show()
                 }
+
         }
     }
 
