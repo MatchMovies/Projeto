@@ -90,7 +90,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="Entar"
+                android:text="Entrar"
                 android:backgroundTint="@color/purple_800"
                 android:textColor="#F4FAFA"
                 android:layout_marginTop="5dp"/>

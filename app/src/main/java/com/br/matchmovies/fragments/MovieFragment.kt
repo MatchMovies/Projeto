@@ -33,14 +33,13 @@ class MovieFragment : Fragment() {
 
     private val recycler by lazy { view?.findViewById<RecyclerView>(R.id.rv_list_of_movie_list) }
     private val textNoMatch by lazy { view?.findViewById<TextView>(R.id.textNoMatch) }
-    private val progressBar by lazy { view?.findViewById<ProgressBar>(R.id.progressBar_list_movie) }
+   // private val progressBar by lazy { view?.findViewById<ProgressBar>(R.id.progressBar_list_movie) }
     private val viewModel by lazy { ViewModelProviders.of(this).get(MoviesViewModel::class.java) }
 
   //  lateinit var progressBar: ProgressBar
     private var firestoreDb = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
 
-    var loading = true
     var shoudRefreshOnResume = false
 
     private val matchList = mutableListOf<MatchMovieList>()
@@ -72,7 +71,7 @@ class MovieFragment : Fragment() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        showProgressBar()
+    //    showProgressBar()
         getUserMovies()
         getUserSeries()
 
@@ -103,7 +102,6 @@ class MovieFragment : Fragment() {
                             }
                         }
                     }
-                    loading = false
                 }.addOnFailureListener {
                     it
                 }
@@ -127,7 +125,6 @@ class MovieFragment : Fragment() {
                             }
                         }
                     }
-                    loading  = false
                 }.addOnFailureListener {
                     it
                 }
@@ -136,11 +133,7 @@ class MovieFragment : Fragment() {
 
     private fun configData(name: String, fav: List<TypeMatch>) {
         matchList.add(MatchMovieList(name, fav))
-
-        if(!loading){
-            initRecycler()
-            progressBar?.visibility = GONE
-        }
+        initRecycler()
         configMsg()
     }
 
@@ -169,14 +162,6 @@ class MovieFragment : Fragment() {
         }
     }
 
-    private fun showProgressBar() {
-            if (loading) {
-                progressBar?.visibility  = VISIBLE
-            } else {
-                progressBar?.visibility = GONE
-            }
-    }
-
     private fun showErrorMessage() {
         viewModel.errorMessage.observe(this, Observer {
             it?.let {
@@ -184,5 +169,13 @@ class MovieFragment : Fragment() {
             }
         })
     }
+
+    //    private fun showProgressBar() {
+//            if (loading) {
+//                progressBar?.visibility  = VISIBLE
+//            } else {
+//                progressBar?.visibility = GONE
+//            }
+//    }
 
 }
