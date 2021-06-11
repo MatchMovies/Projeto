@@ -117,6 +117,7 @@ class EditarCadastro : AppCompatActivity() {
         userAuth?.let { user ->
             firebaseStorage.getReference("uploads")
                 .child(user.uid)
+                .child(USER_SERVICE + ".jpeg")
                 .downloadUrl
                 .addOnSuccessListener { url ->
                     Toast.makeText(this, "Picture url downloaded with success", Toast.LENGTH_LONG)
