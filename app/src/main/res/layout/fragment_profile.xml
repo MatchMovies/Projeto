@@ -217,7 +217,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_email"
                         app:rippleColor="#000000"
                         tools:ignore="RtlCompat"
-                        tools:visibility="invisible" />
+                        tools:visibility="visible" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -318,6 +318,7 @@
                         android:src="@drawable/ic_filme"
                         app:layout_constraintBottom_toTopOf="@+id/iv_series"
                         app:layout_constraintEnd_toStartOf="@+id/tv_meus_filmes"
+                        app:layout_constraintHorizontal_bias="0.58"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -368,6 +369,7 @@
                         android:src="@drawable/ic_serie"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/tv_minhas_series"
+                        app:layout_constraintHorizontal_bias="0.36"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/iv_filmes"
                         tools:ignore="MissingConstraints" />
@@ -376,7 +378,7 @@
                         android:id="@+id/tn_matchs_series"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="6dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="16dp"
@@ -415,7 +417,7 @@
                         android:id="@+id/tn_matchs"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="16dp"
                         android:layout_marginEnd="8dp"
                         android:ems="10"
