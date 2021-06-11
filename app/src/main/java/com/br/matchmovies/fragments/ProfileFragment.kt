@@ -60,8 +60,8 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
         val viewFragment = inflater.inflate(R.layout.fragment_profile, container, false)
@@ -69,6 +69,33 @@ class ProfileFragment : Fragment() {
         val viewFragmentGc = inflater.inflate(R.layout.fragment_profile, container, false)
         val viewFragmentContato = inflater.inflate(R.layout.fragment_profile, container, false)
         val view: View = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        //val btnBack = view.findViewById<View>(R.id.btn_voltar) as Button
+/*        val btnEditProfile = view.findViewById<View>(R.id.btn_editarPerfil) as Button
+        val btnSair = view.findViewById<View>(R.id.ib_exit) as ImageButton*/
+
+        /*    btnBack.setOnClickListener {
+                 val transition = requireActivity().supportFragmentManager.beginTransaction()
+                 transition.replace(R.id.fl_wrapper, HomeFragment())
+                 transition.addToBackStack(null)
+                 transition.commit()
+             }*/
+
+
+        val btnEditProfile = view.findViewById<View>(R.id.btn_editarPerfil) as Button
+        val btnSair = view.findViewById<View>(R.id.ib_exit) as ImageButton
+
+
+
+        btnEditProfile.setOnClickListener {
+            val intent = Intent(requireContext(), CadastroActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnSair.setOnClickListener {
+            this.onDestroy()
+        }
+
 
         initFields(viewFragment, viewFragmentMn, viewFragmentGc, viewFragmentContato)
         constraintViewCard.setOnClickListener {
@@ -176,6 +203,9 @@ class ProfileFragment : Fragment() {
         buttonExpandView4.setBackgroundResource(R.drawable.ic_baseline_expand_less_24)
     }
 
+
+
+}
 //    private fun getUserMovies() {
 //        firebaseAuth.currentUser?.let { user ->
 //            firestoreDb.collection("users")

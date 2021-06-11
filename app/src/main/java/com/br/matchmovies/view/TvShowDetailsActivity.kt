@@ -4,29 +4,22 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.*
 import android.widget.RatingBar.OnRatingBarChangeListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProviders
 import com.br.matchmovies.R
-import com.br.matchmovies.adapter.TypeMatch
-import com.br.matchmovies.model.MatchMovieList
-import com.br.matchmovies.model.modelDatabase.FavoriteMovies
-import com.br.matchmovies.model.modelDatabase.Subject
-import com.br.matchmovies.model.modelDatabase.UserMovies
-import com.br.matchmovies.model.modelSimilar.Result
+import com.br.matchmovies.model.modelDatabase.*
+import com.br.matchmovies.model.modelSimilarTvSeries.Result
 import com.br.matchmovies.repository.SingletonConfiguration
-import com.br.matchmovies.viewmodel.MovieDetailsViewModel
+import com.br.matchmovies.viewmodel.TvShowDetailsViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
 
-
-class MovieDetailsActivity : AppCompatActivity() {
+class TvShowDetailsActivity : AppCompatActivity() {
 
     private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
     private val imageMovie by lazy { findViewById<ImageView>(R.id.img_movie) }
@@ -47,30 +40,29 @@ class MovieDetailsActivity : AppCompatActivity() {
     private val textProvider by lazy { findViewById<TextView>(R.id.tv_provider) }
     private val layoutProvider by lazy { findViewById<LinearLayout>(R.id.layout_provider) }
     lateinit var videoId: String
-    lateinit var movie: Result
+    lateinit var tvShow: Result
     private val configuration = SingletonConfiguration.config
 
     private var firestoreDb = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
 
-    private val movieList = mutableListOf<Result>()
+    private val tvShowList = mutableListOf<Result>()
 
     private val viewModel by lazy {
-        ViewModelProviders.of(this).get(MovieDetailsViewModel::class.java)
+        ViewModelProviders.of(this).get(TvShowDetailsViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_details)
+        setContentView(R.layout.activity_tv_show_details)
         firebaseAuth = FirebaseAuth.getInstance()
-
         configToolbar()
         showErrorMessage()
 
         val info = intent.extras
-        movie = info?.getSerializable("movie") as Result
+        tvShow = info?.getSerializable("tvshow") as Result
 
-        viewModel.configMovieID(movie.id)
+        viewModel.configMovieID(tvShow.id)
 
         initViews()
         showButtonTrailer()
@@ -97,7 +89,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         viewModel.trailerLiveData.observe(this) { idTrailer ->
             if (idTrailer.isNotEmpty()) {
-                btnTrailer.visibility = VISIBLE
+                btnTrailer.visibility = View.VISIBLE
                 videoId = idTrailer
             }
         }
@@ -120,7 +112,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
 
         btnShare.setOnClickListener {
-            shareText("Já assistiu a ${movie.title}? https://www.themoviedb.org/movie/${movie.id}")
+            shareText("Já assistiu a ${tvShow.name}? https://www.themoviedb.org/movie/${tvShow.id}")
         }
     }
 
@@ -129,7 +121,7 @@ class MovieDetailsActivity : AppCompatActivity() {
             .setTitle("Tem certeza?")
             .setMessage("Ao desfazer o match ${title.text} sairá da sua lista de filmes. Deseja continuar?")
             .setPositiveButton("Sim, tenho certeza") { _, _ ->
-                getUserMovies()
+                getUserSeries()
                 onBackPressed()
                 Toast.makeText(this, "Match com ${title.text} desfeito!", Toast.LENGTH_LONG).show()
             }.setNegativeButton("Cancelar") { dialog, _ ->
@@ -176,20 +168,20 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun initViews() {
 
-        setMoviePoster(movie.poster_path)
-        setGenre(movie.genre_ids)
+        setMoviePoster(tvShow.poster_path)
+        setGenre(tvShow.genre_ids)
         setMovieCredits()
 
-        if (movie.overview.isNotBlank()) {
-            textOverview.text = movie.overview
+        if (tvShow.overview.isNotBlank()) {
+            textOverview.text = tvShow.overview
         } else {
             textOverview.text = "Sinopse indisponível."
         }
 
-        ratingBar.rating = movie.vote_average.toFloat()
-        voteAverage.text = movie.vote_average.toString()
-        title.text = movie.title
-        year.text = movie.release_date.subSequence(0, 4)
+        title.text = tvShow.name
+        ratingBar.rating = tvShow.vote_average.toFloat()
+        voteAverage.text = tvShow.vote_average.toString()
+        year.text = tvShow.first_air_date.subSequence(0, 4)
 
     }
 
@@ -197,7 +189,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         val listDirector = mutableListOf<String>()
         viewModel.movieCreditsLiveData.observe(this) { movieCredits ->
             for (it in movieCredits.crew) {
-                if (it.job == "Director") {
+                if (it.job == "Executive Producer") {
                     listDirector.add(it.name)
                 }
             }
@@ -234,7 +226,7 @@ class MovieDetailsActivity : AppCompatActivity() {
         Picasso.get().load(imageUrl).into(imageMovie)
 
         val imageUrl2 = "${configuration?.images?.base_url}${
-            configuration?.images?.backdrop_sizes?.get(0)}${movie.backdrop_path}"
+            configuration?.images?.backdrop_sizes?.get(0)}${tvShow.backdrop_path}"
 
         Picasso.get().load(imageUrl2).into(imageBackgroung)
     }
@@ -262,8 +254,8 @@ class MovieDetailsActivity : AppCompatActivity() {
                 }
 
             } catch (error: Throwable) {
-                layoutProvider.visibility = GONE
-                textProvider.visibility = GONE
+                layoutProvider.visibility = View.GONE
+                textProvider.visibility = View.GONE
             }
 
         }
@@ -280,17 +272,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         return builder
     }
 
-    private fun getUserMovies() {
+    private fun getUserSeries() {
         firebaseAuth.currentUser?.let { user ->
             firestoreDb.collection("users")
                 .document(user.uid)
-                .collection("movies")
-                .document("matchMovies")
+                .collection("series")
+                .document("matchSeries")
                 .get()
                 .addOnSuccessListener {
-                    val us = it.toObject(UserMovies::class.java)
+                    val us = it.toObject(UserSeries::class.java)
                     if (us != null) {
-                        us.movies?.nameMovies?.let { fav ->
+                        us.series?.nameSeries?.let { fav ->
                             if(fav.isNotEmpty()){
                                 removeData(fav)
                             }
@@ -301,27 +293,26 @@ class MovieDetailsActivity : AppCompatActivity() {
                 }
         }
     }
-
     private fun removeData(fav: List<Result>) {
-        movieList.addAll(fav)
-        movieList.remove(movie)
+        tvShowList.addAll(fav)
+        tvShowList.remove(tvShow)
         updateList()
     }
 
     private fun updateList() {
         firebaseAuth.currentUser?.let { user ->
             val subject = Subject("Firebase Database")
-            val userDb = UserMovies(
+            val userDb = UserSeries(
                 user.email ?: "",
                 user.displayName,
                 subject,
-                FavoriteMovies(movieList)
+                FavoriteSeries(tvShowList)
             )
 
             firestoreDb.collection("users")
                 .document(user.uid)
-                .collection("movies")
-                .document("matchMovies")
+                .collection("series")
+                .document("matchSeries")
                 .set(userDb)
                 .addOnSuccessListener {
                     it

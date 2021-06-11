@@ -16,7 +16,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
             android:background="@color/purple_900"
             android:foreground="@drawable/ic_logo_horizontal"
             android:foregroundGravity="center"

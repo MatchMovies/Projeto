@@ -16,9 +16,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatchMovies"
+
+        android:usesCleartextTraffic="true">
+        <activity android:name=".view.TvShowDetailsActivity"></activity>
+
         android:usesCleartextTraffic="true" >
         <activity android:name=".view.EditarCadastro" >
         </activity>
+
         <activity
             android:name=".view.TrailerActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
@@ -44,6 +49,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.br.matchmovies"
@@ -53,6 +59,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
     </application>
 
 </manifest>
